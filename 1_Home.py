@@ -1,24 +1,14 @@
 import streamlit as st
 import streamlit_authenticator as sa
-import deta
-import os
-
-# auth functions
-conn = deta.Deta(os.environ["db_key"])
-
-db = conn.Base("users")
-
-def fetchAllUsers():
-    return db.fetch().items
+import _auth
 
 
-# main
 title = "Cube Stadium"
 st.set_page_config(page_title=title, page_icon="👋")
 st.title(title)
 
 # authentication
-get_users = fetchAllUsers()
+get_users = _auth.fetchAllUsers()
 usernames = [user["key"] for user in get_users]
 names = [user["name"] for user in get_users]
 hashed_passwords = [user["password"] for user in get_users]
@@ -34,7 +24,7 @@ if authentication_status == None:
     st.warning("Please enter your username and password")
 
 if authentication_status == True:
-    st.success("Logged in as {}".format(st.session_state.name))
+    st.success("Logged in as {}".format(name))
 
     #sidebar
     st.session_state.authenticator.logout("Logout", "sidebar")

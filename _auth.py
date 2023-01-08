@@ -22,4 +22,4 @@ def deleteUser(username):
     return db.delete(username)
 
 def encodePassword(password):
-    return sa.Hasher(password).generate()[0]
+    return sa.Hasher([password]).generate()[0]
