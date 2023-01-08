@@ -17,6 +17,7 @@ st.session_state.authenticator = sa.Authenticate(names, usernames, hashed_passwo
     "sales_dashboard", "secret", cookie_expiry_days=30)
 
 name, authentication_status, username = st.session_state.authenticator.login("Login", "main")
+print(name, authentication_status, username, sep=" | ")
 
 if authentication_status == False:
     st.error("Username/password is incorrect")
