@@ -5,7 +5,6 @@ import _auth
 
 title = "Cube Stadium"
 st.set_page_config(page_title=title, page_icon="👋")
-st.sidebar.markdown("# Home")
 st.title(title)
 
 # authentication
