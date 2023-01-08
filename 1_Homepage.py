@@ -16,15 +16,15 @@ hashed_passwords = [user["password"] for user in get_users]
 st.session_state.authenticator = sa.Authenticate(names, usernames, hashed_passwords,
     "sales_dashboard", "secret", cookie_expiry_days=30)
 
-st.session_state.name, st.session_state.authentication_status, st.session_state.username = st.session_state.authenticator.login("Login", "main")
+name, authentication_status, username = st.session_state.authenticator.login("Login", "main")
 
-if st.session_state.authentication_status == False:
+if authentication_status == False:
     st.error("Username/password is incorrect")
 
-if st.session_state.authentication_status == None:
+if authentication_status == None:
     st.warning("Please enter your username and password")
 
-if st.session_state.authentication_status == True:
+if authentication_status == True:
     st.success("Logged in as {}".format(st.session_state.name))
 
     #sidebar
