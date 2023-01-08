@@ -11,28 +11,41 @@ st.title(title)
 get_users = _auth.fetchAllUsers()
 usernames = [user["key"] for user in get_users]
 names = [user["name"] for user in get_users]
-hashed_passwords = [user["password"] for user in get_users]
+hashedPasswords = [user["password"] for user in get_users]
+userDatas = [user["data"] for user in get_users]
 
-st.session_state.authenticator = sa.Authenticate(names, usernames, hashed_passwords, "cubestadium", "secret")
+st.session_state.authenticator = sa.Authenticate(names, usernames, hashedPasswords, "cubestadium", "secret")
 
-name, authentication_status, username = st.session_state.authenticator.login("Login", "main")
+name, authenticationStatus, username = st.session_state.authenticator.login("Login", "main")
 
-if authentication_status == False:
+if authenticationStatus == False:
     st.error("Username/password is incorrect")
 
-if authentication_status == None:
+if authenticationStatus == None:
     st.warning("Please enter your username and password")
 
-if authentication_status == True:
+if authenticationStatus == True:
     st.success("Logged in as {}".format(name))
 
     #sidebar
     st.session_state.authenticator.logout("Logout", "sidebar")
 
     #main
-    pb = 0.00; delta_pb = 0.00
-    ao5 = 0.00; delta_ao5 = 0.00
-    ao12 = 0.00; delta_ao12 = 0.00
+
+    #get user data
+    userIndex = usernames.index(username)
+
+    pb = userDatas[userIndex]["pb"]
+    ao5 = userDatas[userIndex]["ao5"]
+    ao12 = userDatas[userIndex]["ao12"]
+    scrambles = userDatas[userIndex]["scrambles"]
+    times = userDatas[userIndex]["times"]
+    list_ao5 = userDatas[userIndex]["list_ao5"]
+    list_ao12 = userDatas[userIndex]["list_ao12"]
+
+    delta_pb = pb - times[-1]
+    delta_ao5 = ao5 - list_ao5[-1]
+    delta_ao12 = ao12 - list_ao12[-1]
 
     st.subheader("👋 Welcome to Cube Stadium !")
     col1, col2, col3, = st.columns(3)
