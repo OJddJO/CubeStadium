@@ -1,18 +1,17 @@
 import streamlit as st
 import streamlit_authenticator as sa
-import pathlib
-import pickle
+import _auth
+
 
 title = "Cube Stadium"
 st.set_page_config(page_title=title, page_icon="👋")
 st.title(title)
 
 # authentication
-names = ["user1", "user2"]
-usernames = ["user1", "user2"]
-file_path = pathlib.Path(__file__).parent / "hashed_pw.pkl"
-with file_path.open("rb") as file:
-    hashed_passwords = pickle.load(file)
+get_users = _auth.fetchAllUsers()
+usernames = [user["key"] for user in get_users]
+names = [user["name"] for user in get_users]
+hashed_passwords = [user["password"] for user in get_users]
 
 st.session_state.authenticator = sa.Authenticate(names, usernames, hashed_passwords,
     "sales_dashboard", "secret", cookie_expiry_days=30)
