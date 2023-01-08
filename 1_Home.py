@@ -1,14 +1,24 @@
 import streamlit as st
 import streamlit_authenticator as sa
-import _auth
+import deta
+import os
+
+# auth functions
+conn = deta.Deta(os.environ["db_key"])
+
+db = conn.Base("users")
+
+def fetchAllUsers():
+    return db.fetch().items
 
 
+# main
 title = "Cube Stadium"
 st.set_page_config(page_title=title, page_icon="👋")
 st.title(title)
 
 # authentication
-get_users = _auth.fetchAllUsers()
+get_users = fetchAllUsers()
 usernames = [user["key"] for user in get_users]
 names = [user["name"] for user in get_users]
 hashed_passwords = [user["password"] for user in get_users]
