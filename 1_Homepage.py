@@ -14,7 +14,7 @@ names = [user["name"] for user in get_users]
 hashed_passwords = [user["password"] for user in get_users]
 
 st.session_state.authenticator = sa.Authenticate(names, usernames, hashed_passwords,
-    "sales_dashboard", "secret", cookie_expiry_days=30)
+    "sales_dashboard", "secret")
 
 name, authentication_status, username = st.session_state.authenticator.login("Login", "main")
 
