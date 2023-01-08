@@ -8,6 +8,7 @@ st.title(title)
 
 if st.session_state.authentication_status == True:
     st.error("You are already logged in")
+    st.session_state.authenticator.logout("Logout", "sidebar")
 
 if st.session_state.authentication_status == None or st.session_state.authentication_status == False:
 
@@ -22,4 +23,3 @@ if st.session_state.authentication_status == None or st.session_state.authentica
         else:
             st.success("Registered !")
             _auth.insertUser(name, username, password)
-            st.session_state.authenticator.login("Login", "main")
