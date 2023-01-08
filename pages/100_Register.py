@@ -3,7 +3,7 @@ import streamlit_authenticator as sa
 import _auth
 
 title = "Register"
-st.set_page_config(page_title=title, page_icon="🪪")
+st.set_page_config(page_title=title, page_icon="🗒️")
 st.title(title)
 
 if st.session_state.authentication_status == True:
