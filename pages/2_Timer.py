@@ -9,3 +9,6 @@ if st.session_state.authentication_status == None or st.session_state.authentica
 
 if st.session_state.authentication_status == True:
     st.session_state.authenticator.logout("Logout", "sidebar")
+
+    #main
+    
