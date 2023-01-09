@@ -42,13 +42,16 @@ try:
                 timerContainer.subheader(str(timer).format("%.3f"))
                 await asyncio.sleep(0.01)
         
+        buttonsContainer = st.columns(3)
         if timerContainer.button("Start"):
-            timerStarted = True
-            asyncio.run(timerFunc())
-            if timerContainer.button("Stop"):
-                timerStarted = False
-                timerContainer.subheader(str(timer).format("%.3f"))
-                timer = 0.00
+            if timerStarted == False:
+                timerStarted = True
+                asyncio.run(timerFunc())
+
+        if timerContainer.button("Stop"):
+            timerStarted = False
+            timerContainer.subheader(str(timer).format("%.3f"))
+            timer = 0.00
 
 
 except Exception as e:
