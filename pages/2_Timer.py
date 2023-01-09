@@ -14,7 +14,7 @@ if st.session_state.authentication_status == True:
     #main
     try:
         scrambleContainer = st.empty()
-        scrambleContainer.subheader(getScramble(scrambleSizeOption))
+        scrambleContainer.subheader(getScramble(int(scrambleSizeOption)))
     except:
         scrambleContainer.subheader(getScramble())
 
