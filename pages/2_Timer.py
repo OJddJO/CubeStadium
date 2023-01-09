@@ -39,12 +39,16 @@ try:
             global timerStarted
             while timerStarted:
                 timer += 0.01
-                timerContainer.subheader(str(timer).format("0.3f"))
+                timerContainer.subheader(str(timer).format("%.3f"))
                 await asyncio.sleep(0.01)
         
         if timerContainer.button("Start"):
             timerStarted = True
             asyncio.run(timerFunc())
+            if timerContainer.button("Stop"):
+                timerStarted = False
+                timerContainer.subheader(str(timer).format("%.3f"))
+                timer = 0.00
 
 
 except Exception as e:
