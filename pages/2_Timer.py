@@ -19,10 +19,6 @@ try:
         scrambleSizeOption = optionsExpander.selectbox("Scramble size", ["15", "20", "25", "30"], key="scrambleSizeOption")
 
         scrambleContainer = st.empty()
-        try:
-            scrambleContainer.subheader(getScramble(int(scrambleSizeOption)))
-        except:
-            scrambleContainer.subheader(getScramble())
 
         if optionsExpander.button("Re-Scramble"):
             scrambleContainer.subheader(getScramble(int(scrambleSizeOption)))
@@ -35,6 +31,7 @@ try:
         except:
             st.session_state.timer = 0.00
             st.session_state.timerStarted = False
+            scrambleContainer.subheader(getScramble())
             timerContainer.subheader("{:.2f}".format(st.session_state.timer))
 
         async def timerFunc():
@@ -46,6 +43,7 @@ try:
                 await asyncio.sleep(0.01)
                 if buttonState:
                     st.session_state.timerStarted = False
+                    scrambleContainer.subheader(getScramble(int(scrambleSizeOption)))
                     break
 
         button = st.empty()
