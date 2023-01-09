@@ -14,13 +14,12 @@ try:
 
         #main
         optionsExpander = st.expander("Scramble Options")
-        scrambleSizeCol, rescrambleCol = optionsExpander.columns(2)
-        scrambleSizeOption = scrambleSizeCol.selectbox("Scramble size", ["15", "20", "25", "30"], key="scrambleSizeOption")
+        scrambleSizeOption = optionsExpander.selectbox("Scramble size", ["15", "20", "25", "30"], key="scrambleSizeOption")
 
         scrambleContainer = st.empty()
         scrambleContainer.subheader(getScramble())
 
-        if rescrambleCol.button("Rescramble"):
+        if optionsExpander.button("Rescramble"):
             scrambleContainer.subheader(getScramble(int(scrambleSizeOption)))
 except:
     st.error("Please go to home page first")
