@@ -43,9 +43,18 @@ if authenticationStatus == True:
     list_ao5 = userDatas[userIndex]["list_ao5"]
     list_ao12 = userDatas[userIndex]["list_ao12"]
 
-    delta_pb = pb - times[-1]
-    delta_ao5 = ao5 - list_ao5[-1]
-    delta_ao12 = ao12 - list_ao12[-1]
+    try:
+        delta_pb = pb - times[-1]
+    except:
+        delta_pb = None
+    try:
+        delta_ao5 = ao5 - list_ao5[-1]
+    except:
+        delta_ao5 = None
+    try:
+        delta_ao12 = ao12 - list_ao12[-1]
+    except:
+        delta_ao12 = None
 
     st.subheader("👋 Welcome to Cube Stadium !")
     col1, col2, col3, = st.columns(3)
