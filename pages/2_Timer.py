@@ -41,7 +41,7 @@ try:
                 if timerStarted == False:
                     timerStarted = True
             
-            event("space", spacePressed)
+            event.Hotkey("space", spacePressed)
 
             while timerStarted == True:
                 timer += 0.01
