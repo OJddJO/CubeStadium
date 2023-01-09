@@ -12,10 +12,8 @@ try:
         st.error("Please login to access this page")
 
     if st.session_state.authentication_status == True:
-        st.session_state.authenticator.logout("Logout", "sidebar")
-
         #main
-        st.sidebar("Scramble Options")
+        st.sidebar.title("Scramble Options")
         scrambleContainer = st.empty()
 
         scrambleSizeOption = st.sidebar.selectbox("Scramble size", ["15", "20", "25", "30"], key="scrambleSizeOption")
@@ -62,6 +60,10 @@ try:
             if st.session_state.timerStarted == False:
                 st.session_state.timerStarted = True
                 timerFunc()
+
+
+
+        st.session_state.authenticator.logout("Logout", "sidebar")
             
 
 except Exception as e:
