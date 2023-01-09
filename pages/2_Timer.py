@@ -37,7 +37,7 @@ try:
             scrambleContainer.subheader(st.session_state.scramble)
             timerContainer.subheader("{:.2f}".format(st.session_state.timer))
 
-        # async timer to allow update
+
         def timerFunc():
             # init timer with scramble and reset timer
             buttonState = startStop.button("Stop")
@@ -56,8 +56,7 @@ try:
                     scrambleContainer.subheader(st.session_state.scramble)
                 sleep(0.01)
 
-        buttonCol1, buttonCol2 = st.columns(2)
-        startStop = buttonCol1.empty()
+        startStop = st.empty()
         if startStop.button("Start"):
             if st.session_state.timerStarted == False:
                 st.session_state.timerStarted = True
