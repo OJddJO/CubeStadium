@@ -61,7 +61,7 @@ try:
         if startStop.button("Start"):
             if st.session_state.timerStarted == False:
                 st.session_state.timerStarted = True
-                asyncio.run(timerFunc())
+                timerFunc()
             
 
 except Exception as e:
