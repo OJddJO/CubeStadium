@@ -23,7 +23,6 @@ try:
 
         # timer
         timerContainer = st.empty()
-        st.session_state.timerStarted = False
         try:
             scrambleContainer.subheader(st.session_state.scramble)
             timerContainer.title("{:.2f}".format(st.session_state.timer))
@@ -38,7 +37,6 @@ try:
             # init timer with scramble and reset timer
             buttonState = startStop.button("Stop", on_click=stopTimer)
             scrambleContainer.subheader(st.session_state.scramble)
-            st.session_state.timer = 0.00
             timer = 0.00
             # start timer
             run = True
@@ -55,7 +53,6 @@ try:
             st.session_state.timer = timer
         
         def stopTimer():
-            st.session_state.timerStarted = False
             st.session_state.scramble = getScramble(int(scrambleSizeOption))
             scrambleContainer.subheader(st.session_state.scramble)
             st.success("Time not registered !")
