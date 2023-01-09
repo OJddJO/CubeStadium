@@ -29,6 +29,7 @@ try:
         timerContainer = st.empty()
         try:
             timerContainer.subheader("{:.2f}".format(st.session_state.timer))
+            scrambleContainer.subheader(st.session_state.scramble)
         except:
             st.session_state.scramble = getScramble()
             st.session_state.timer = 0.00
@@ -47,7 +48,6 @@ try:
                 if buttonState:
                     st.session_state.timerStarted = False
                     st.session_state.scramble = getScramble(int(scrambleSizeOption))
-                    scrambleContainer.subheader(st.session_state.scramble)
                     break
 
         button = st.empty()
