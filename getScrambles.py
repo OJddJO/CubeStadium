@@ -10,4 +10,6 @@ def getScramble(times=15):
         if move != lastMove:
             scramble += move + " "
             lastMove = move
+        else:
+            i -= 1
     return scramble
