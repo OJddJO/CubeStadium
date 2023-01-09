@@ -39,16 +39,19 @@ try:
             buttonState = startStop.button("Stop", on_click=stopTimer)
             scrambleContainer.subheader(st.session_state.scramble)
             st.session_state.timer = 0.00
+            timer = 0.00
             # start timer
             run = True
             while run:
-                st.session_state.timer += 0.01
-                timerContainer.title("{:.2f}".format(st.session_state.timer))
+                timer += 0.01
+                timerContainer.title("{:.2f}".format(timer))
                 # stop button timer
                 if buttonState:
                     # stop timer
                     run = False
-                sleep(0.0093)
+                sleep(0.0095)
+            st.session_state.timer = timer
+            timerContainer.title("{:.2f}".format(st.session_state.timer))
         
         def stopTimer():
             st.session_state.timerStarted = False
