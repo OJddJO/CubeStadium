@@ -53,7 +53,6 @@ try:
                 timer = t2 - t1
                 sleep(0.01)
             st.session_state.timer = t2-t1
-            timerContainer.title("{:.2f}".format(st.session_state.timer))
         
         def stopTimer():
             st.session_state.timerStarted = False
