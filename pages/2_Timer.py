@@ -21,7 +21,8 @@ try:
         scrambleContainer = st.empty()
 
         if optionsExpander.button("Re-Scramble"):
-            scrambleContainer.subheader(getScramble(int(scrambleSizeOption)))
+            st.session_state.scramble = getScramble(int(scrambleSizeOption))
+            scrambleContainer.subheader()
         
         # timer
 
@@ -29,13 +30,15 @@ try:
         try:
             timerContainer.subheader("{:.2f}".format(st.session_state.timer))
         except:
+            st.session_state.scramble = getScramble()
             st.session_state.timer = 0.00
             st.session_state.timerStarted = False
-            scrambleContainer.subheader(getScramble())
+            scrambleContainer.subheader(st.session_state.scramble)
             timerContainer.subheader("{:.2f}".format(st.session_state.timer))
 
         async def timerFunc():
             buttonState = button.button("Stop")
+            scrambleContainer.subheader(st.session_state.scramble)
             st.session_state.timer = 0.00
             while st.session_state.timerStarted:
                 st.session_state.timer += 0.01
@@ -43,7 +46,8 @@ try:
                 await asyncio.sleep(0.01)
                 if buttonState:
                     st.session_state.timerStarted = False
-                    scrambleContainer.subheader(getScramble(int(scrambleSizeOption)))
+                    st.session_state.scramble = getScramble(int(scrambleSizeOption))
+                    scrambleContainer.subheader(st.session_state.scramble)
                     break
 
         button = st.empty()
