@@ -43,24 +43,26 @@ try:
             scrambleContainer.subheader(st.session_state.scramble)
             st.session_state.timer = 0.00
             # start timer
-            while st.session_state.timerStarted:
+            run = True
+            while run:
                 st.session_state.timer += 0.01
                 timerContainer.subheader("{:.2f}".format(st.session_state.timer))
                 # stop button timer
                 if buttonState:
                     # stop timer
-                    st.session_state.timerStarted = False
-                    # get new scramble
-                    st.session_state.scramble = getScramble(int(scrambleSizeOption))
-                    scrambleContainer.subheader(st.session_state.scramble)
+                    run = False
                 sleep(0.01)
+            # get new scramble
+            st.session_state.timerStarted = False
+            st.session_state.scramble = getScramble(int(scrambleSizeOption))
+            scrambleContainer.subheader(st.session_state.scramble)
+            st.success("Time registered !")
 
         startStop = st.empty()
         if startStop.button("Start"):
             if st.session_state.timerStarted == False:
                 st.session_state.timerStarted = True
                 timerFunc()
-                st.success("Time registered !")
             
 
 except Exception as e:
