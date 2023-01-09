@@ -42,7 +42,7 @@ try:
             timer = 0.00
             # start timer
             run = True
-            t1 = time.time()
+            t1 = time()
             while run:
                 timerContainer.title("{:.2f}".format(timer))
                 # stop button timer
@@ -51,7 +51,7 @@ try:
                     run = False
                 timer += 0.01
                 sleep(0.00925)
-            t2 = time.time()
+            t2 = time()
             st.session_state.timer = t2-t1
             timerContainer.title("{:.2f}".format(st.session_state.timer))
         
