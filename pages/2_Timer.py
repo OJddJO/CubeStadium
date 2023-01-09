@@ -17,7 +17,10 @@ try:
         scrambleSizeOption = optionsExpander.selectbox("Scramble size", ["15", "20", "25", "30"], key="scrambleSizeOption")
 
         scrambleContainer = st.empty()
-        scrambleContainer.subheader(getScramble())
+        try:
+            scrambleContainer.subheader(getScramble(int(scrambleSizeOption)))
+        except:
+            scrambleContainer.subheader(getScramble())
 
         if optionsExpander.button("Rescramble"):
             scrambleContainer.subheader(getScramble(int(scrambleSizeOption)))
