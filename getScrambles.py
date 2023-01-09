@@ -7,7 +7,7 @@ def getScramble(times=15):
     lastMove = ""
     while len(scramble.split(sep=" ")) <= times:
         move = random.choice(moves)
-        if move != lastMove:
+        if move != lastMove[0]:
             scramble += move + " "
             lastMove = move
     return scramble
