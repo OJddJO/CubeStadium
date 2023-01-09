@@ -38,7 +38,7 @@ try:
             timerContainer.subheader("{:.2f}".format(st.session_state.timer))
 
         # async timer to allow update
-        async def timerFunc():
+        def timerFunc():
             global timerContainer
             # init timer with scramble and reset timer
             buttonState = startStop.button("Stop")
@@ -55,7 +55,7 @@ try:
                     # get new scramble
                     st.session_state.scramble = getScramble(int(scrambleSizeOption))
                     scrambleContainer.subheader(st.session_state.scramble)
-                await asyncio.sleep(0.01)
+                sleep(0.01)
 
         buttonCol1, buttonCol2 = st.columns(2)
         startStop = buttonCol1.empty()
