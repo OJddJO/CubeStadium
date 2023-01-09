@@ -1,6 +1,5 @@
 import streamlit as st
 from getScrambles import getScramble
-import asyncio
 from time import sleep
 
 title = "Timer"

@@ -1,5 +1,4 @@
 import streamlit as st
-import streamlit_authenticator as sa
 import _auth
 
 title = "Register"
