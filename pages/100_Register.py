@@ -14,11 +14,12 @@ try:
     if st.session_state.authentication_status == None or st.session_state.authentication_status == False:
 
         #main
-        name = st.text_input("Name", "")
-        username = st.text_input("Username", "")
-        password = st.text_input("Password", type="password")
+        regContainer = st.container()
+        name = regContainer.text_input("Name", "")
+        username = regContainer.text_input("Username", "")
+        password = regContainer.text_input("Password", type="password")
 
-        if st.button("Register"):
+        if regContainer.button("Register"):
             if name == "" or username == "" or password == "":
                 st.error("Please fill all the fields")
             else:
@@ -26,12 +27,13 @@ try:
                 st.info("You can now login at the home page")
                 _auth.insertUser(name, username, password)
 except:
-    #main
-        name = st.text_input("Name", "")
-        username = st.text_input("Username", "")
-        password = st.text_input("Password", type="password")
+        #main
+        regContainer = st.container()
+        name = regContainer.text_input("Name", "")
+        username = regContainer.text_input("Username", "")
+        password = regContainer.text_input("Password", type="password")
 
-        if st.button("Register"):
+        if regContainer.button("Register"):
             if name == "" or username == "" or password == "":
                 st.error("Please fill all the fields")
             else:
