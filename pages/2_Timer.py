@@ -36,7 +36,7 @@ try:
 
         def timerFunc():
             # init timer with scramble and reset timer
-            buttonState = startStop.button("Stop")
+            buttonState = startStop.button("Stop", on_click=stopTimer)
             scrambleContainer.subheader(st.session_state.scramble)
             st.session_state.timer = 0.00
             # start timer
@@ -49,7 +49,8 @@ try:
                     # stop timer
                     run = False
                 sleep(0.01)
-            # get new scramble
+        
+        def stopTimer():
             st.session_state.timerStarted = False
             st.session_state.scramble = getScramble(int(scrambleSizeOption))
             scrambleContainer.subheader(st.session_state.scramble)
