@@ -30,28 +30,25 @@ try:
         # timer
 
         timerContainer = st.empty()
-        timer = 0.00
-        timerStarted = False
-        timerContainer.subheader(str(timer).format("0.3f"))
+        st.session_state.timer = 0.00
+        st.session_state.timerStarted = False
+        timerContainer.subheader(str(st.session_state.timer).format("0.3f"))
 
         async def timerFunc():
-            global timer
-            global timerStarted
-            while timerStarted:
-                timer += 0.01
-                timerContainer.subheader(str(timer).format("%.3f"))
+            st.session_state.timer = 0.00
+            while st.session_state.timerStarted:
+                st.session_state.timer += 0.01
+                timerContainer.subheader(str(st.session_state.timer).format("%.3f"))
                 await asyncio.sleep(0.01)
         
         startButton, stopButton = st.columns(2)
         if startButton.button("Start"):
-            if timerStarted == False:
-                timerStarted = True
+            if st.session_state.timerStarted == False:
+                st.session_state.timerStarted = True
                 asyncio.run(timerFunc())
 
         if stopButton.button("Stop"):
-            timerStarted = False
-            timerContainer.subheader(str(timer).format("%.3f"))
-            timer = 0.00
+            st.session_state.timerStarted = False
 
 
 except Exception as e:
