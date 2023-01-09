@@ -6,21 +6,35 @@ title = "Register"
 st.set_page_config(page_title=title, page_icon="🗒️")
 st.title(title)
 
-if st.session_state.authentication_status == True:
-    st.error("You are already logged in")
-    st.session_state.authenticator.logout("Logout", "sidebar")
+try:
+    if st.session_state.authentication_status == True:
+        st.error("You are already logged in")
+        st.session_state.authenticator.logout("Logout", "sidebar")
 
-if st.session_state.authentication_status == None or st.session_state.authentication_status == False:
+    if st.session_state.authentication_status == None or st.session_state.authentication_status == False:
 
+        #main
+        name = st.text_input("Name", "")
+        username = st.text_input("Username", "")
+        password = st.text_input("Password", type="password")
+
+        if st.button("Register"):
+            if name == "" or username == "" or password == "":
+                st.error("Please fill all the fields")
+            else:
+                st.success("Registered !")
+                st.info("You can now login at the home page")
+                _auth.insertUser(name, username, password)
+except:
     #main
-    name = st.text_input("Name", "")
-    username = st.text_input("Username", "")
-    password = st.text_input("Password", type="password")
+        name = st.text_input("Name", "")
+        username = st.text_input("Username", "")
+        password = st.text_input("Password", type="password")
 
-    if st.button("Register"):
-        if name == "" or username == "" or password == "":
-            st.error("Please fill all the fields")
-        else:
-            st.success("Registered !")
-            st.info("You can now login at the home page")
-            _auth.insertUser(name, username, password)
+        if st.button("Register"):
+            if name == "" or username == "" or password == "":
+                st.error("Please fill all the fields")
+            else:
+                st.success("Registered !")
+                st.info("You can now login at the home page")
+                _auth.insertUser(name, username, password)
