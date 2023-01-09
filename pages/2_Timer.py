@@ -53,6 +53,7 @@ try:
                     st.session_state.timerStarted = False
                     # get new scramble
                     st.session_state.scramble = getScramble(int(scrambleSizeOption))
+                    button.button("Next Scramble")
                 await asyncio.sleep(0.01)
 
         button = st.empty()
