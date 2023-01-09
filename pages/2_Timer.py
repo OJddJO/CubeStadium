@@ -39,7 +39,6 @@ try:
 
         # async timer to allow update
         async def timerFunc():
-            global scrambleContainer
             # init timer with scramble and reset timer
             buttonState = startStop.button("Stop")
             scrambleContainer.subheader(st.session_state.scramble)
