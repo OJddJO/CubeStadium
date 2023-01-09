@@ -22,7 +22,7 @@ try:
         except:
             scrambleContainer.subheader(getScramble())
 
-        if optionsExpander.button("Rescramble"):
+        if optionsExpander.button("Re-Scramble"):
             scrambleContainer.subheader(getScramble(int(scrambleSizeOption)))
 except:
     st.error("Please go to home page first")
