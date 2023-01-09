@@ -38,15 +38,19 @@ try:
             timerContainer.subheader("{:.2f}".format(st.session_state.timer))
 
         async def timerFunc():
-            buttonState = button.button("Stop")
+            # init timer with scramble and reset timer
             scrambleContainer.subheader(st.session_state.scramble)
             st.session_state.timer = 0.00
+            # start timer
             while st.session_state.timerStarted:
                 st.session_state.timer += 0.01
                 timerContainer.subheader("{:.2f}".format(st.session_state.timer))
                 await asyncio.sleep(0.01)
-                if buttonState:
+                # stop button timer
+                if button.button("Stop"):
+                    # stop timer
                     st.session_state.timerStarted = False
+                    # get new scramble
                     st.session_state.scramble = getScramble(int(scrambleSizeOption))
                     break
 
