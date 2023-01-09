@@ -48,7 +48,7 @@ try:
                 if buttonState:
                     # stop timer
                     run = False
-                sleep(0.0095)
+                sleep(0.0093)
         
         def stopTimer():
             st.session_state.timerStarted = False
