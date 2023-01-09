@@ -31,7 +31,7 @@ try:
         timerContainer = st.empty()
         timer = 0.00
         timerStarted = False
-        timerContainer.subheader(timer.format("0.2f"))
+        timerContainer.subheader(str(timer).format("0.2f"))
 
 
 except Exception as e:
