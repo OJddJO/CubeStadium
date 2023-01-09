@@ -49,7 +49,7 @@ try:
                 if buttonState:
                     # stop timer
                     run = False
-                sleep(0.0095)
+                sleep(0.0092)
             st.session_state.timer = timer
             timerContainer.title("{:.2f}".format(st.session_state.timer))
         
