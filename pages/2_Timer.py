@@ -15,7 +15,7 @@ try:
         st.session_state.authenticator.logout("Logout", "sidebar")
 
         #main
-        optionsExpander = st.expander("Scramble Options")
+        optionsExpander = st.expander("Scramble Options", expanded=True)
         scrambleSizeOption = optionsExpander.selectbox("Scramble size", ["15", "20", "25", "30"], key="scrambleSizeOption")
 
         scrambleContainer = st.empty()
