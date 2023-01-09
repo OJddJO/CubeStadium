@@ -43,12 +43,12 @@ try:
             # start timer
             run = True
             while run:
-                timer += 0.01
                 timerContainer.title("{:.2f}".format(timer))
                 # stop button timer
                 if buttonState:
                     # stop timer
                     run = False
+                timer += 0.01
                 sleep(0.0092)
             st.session_state.timer = timer
             timerContainer.title("{:.2f}".format(st.session_state.timer))
