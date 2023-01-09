@@ -15,11 +15,11 @@ try:
         st.session_state.authenticator.logout("Logout", "sidebar")
 
         #main
-        #optionsExpander = st.expander("Scramble Options", expanded=True)
+        st.sidebar("Scramble Options")
         scrambleContainer = st.empty()
 
-        scrambleSizeOption = st.selectbox("Scramble size", ["15", "20", "25", "30"], key="scrambleSizeOption")
-        if st.button("Re-Scramble"):
+        scrambleSizeOption = st.sidebar.selectbox("Scramble size", ["15", "20", "25", "30"], key="scrambleSizeOption")
+        if st.sidebar.button("Re-Scramble"):
             st.session_state.scramble = getScramble(int(scrambleSizeOption))
             scrambleContainer.subheader(st.session_state.scramble)
 
