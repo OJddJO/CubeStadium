@@ -12,14 +12,11 @@ if st.session_state.authentication_status == True:
     st.session_state.authenticator.logout("Logout", "sidebar")
 
     #main
-    try:
-        scrambleContainer = st.empty()
-        scrambleContainer.subheader(getScramble(int(scrambleSizeOption)))
-    except:
-        scrambleContainer.subheader(getScramble())
+    scrambleContainer = st.empty
+    scrambleContainer.subheader(getScramble())
 
     scrambleSizeCol, rescrambleCol = st.columns(2)
     scrambleSizeOption = scrambleSizeCol.selectbox("Scramble size", ["15", "20", "25", "30"], key="scrambleSizeOption")
 
     if rescrambleCol.button("Rescramble"):
-        scrambleContainer.subheader(getScramble(scrambleSizeOption))
+        scrambleContainer.subheader(getScramble(int(scrambleSizeOption)))
