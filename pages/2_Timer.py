@@ -1,6 +1,6 @@
 import streamlit as st
 from getScrambles import getScramble
-from time import sleep
+from time import sleep, time
 
 title = "Timer"
 st.set_page_config(page_title=title, page_icon="⏱️")
@@ -42,6 +42,7 @@ try:
             timer = 0.00
             # start timer
             run = True
+            t1 = time.time()
             while run:
                 timerContainer.title("{:.2f}".format(timer))
                 # stop button timer
@@ -50,7 +51,8 @@ try:
                     run = False
                 timer += 0.01
                 sleep(0.00925)
-            st.session_state.timer = timer
+            t2 = time.time()
+            st.session_state.timer = t2-t1
             timerContainer.title("{:.2f}".format(st.session_state.timer))
         
         def stopTimer():
