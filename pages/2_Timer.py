@@ -22,7 +22,7 @@ try:
 
         if optionsExpander.button("Re-Scramble"):
             st.session_state.scramble = getScramble(int(scrambleSizeOption))
-            scrambleContainer.subheader()
+            scrambleContainer.subheader(st.session_state.scramble)
         
         # timer
 
