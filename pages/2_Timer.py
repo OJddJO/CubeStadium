@@ -49,7 +49,7 @@ try:
                     # stop timer
                     run = False
                 timer += 0.01
-                sleep(0.0093)
+                sleep(0.00925)
             st.session_state.timer = timer
             timerContainer.title("{:.2f}".format(st.session_state.timer))
         
