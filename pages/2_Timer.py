@@ -29,7 +29,7 @@ try:
             scrambleContainer.subheader(getScramble(int(scrambleSizeOption)))
         
         # timer
-        with elements("callbaks_hotkey"):
+        with elements("callbacks_hotkey"):
 
             timerContainer = st.empty()
             timer = 0.00
