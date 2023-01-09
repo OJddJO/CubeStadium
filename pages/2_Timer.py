@@ -14,12 +14,12 @@ if st.session_state.authentication_status == True:
     #main
     try:
         scrambleContainer = st.empty()
-        scrambleContainer.subheader(getScramble(st.session_state.scrambleSizeOption))
+        scrambleContainer.subheader(getScramble(scrambleSizeOption))
     except:
         scrambleContainer.subheader(getScramble())
 
-    scrableSizeOption, rescrambleCol = st.columns(2)
-    st.session_state.scrambleSizeOption = scrableSizeOption.selectbox("Scramble size", ["15", "20", "25", "30"], key="scrambleSizeOption")
+    scrambleSizeCol, rescrambleCol = st.columns(2)
+    scrambleSizeOption = scrambleSizeCol.selectbox("Scramble size", ["15", "20", "25", "30"], key="scrambleSizeOption")
 
     if rescrambleCol.button("Rescramble"):
-        scrambleContainer.subheader(getScramble(st.session_state.scrambleSizeOption))
+        scrambleContainer.subheader(getScramble(scrambleSizeOption))
