@@ -6,9 +6,6 @@ title = "Register"
 st.set_page_config(page_title=title, page_icon="🗒️")
 st.title(title)
 
-# get all usernames to test if it already exists
-users = _auth.fetchAllUsers()
-usernames = [user["key"] for user in users]
 
 try:
     if st.session_state.authentication_status == True:
@@ -21,6 +18,10 @@ try:
         name = regContainer.text_input("Name", "")
         username = regContainer.text_input("Username", "")
         password = regContainer.text_input("Password", type="password")
+
+        # get all usernames to test if it already exists
+        users = _auth.fetchAllUsers()
+        usernames = [user["key"] for user in users]
 
         if regContainer.button("Register"):
             if name == "" or username == "" or password == "":
@@ -37,6 +38,10 @@ except:
         name = regContainer.text_input("Name", "")
         username = regContainer.text_input("Username", "")
         password = regContainer.text_input("Password", type="password")
+
+        # get all usernames to test if it already exists
+        users = _auth.fetchAllUsers()
+        usernames = [user["key"] for user in users]
 
         if regContainer.button("Register"):
             if name == "" or username == "" or password == "":
