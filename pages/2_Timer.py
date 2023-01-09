@@ -2,7 +2,7 @@ import streamlit as st
 from getScrambles import getScramble
 from streamlit_elements import elements, event
 from time import sleep
-from keyboard import on_press_key
+from keyboard import is_pressed
 
 title = "Timer"
 st.set_page_config(page_title=title, page_icon="⏱️")
@@ -29,13 +29,13 @@ try:
             scrambleContainer.subheader(getScramble(int(scrambleSizeOption)))
         
         # timer
-        timerContainer = st.empty()
-        timer = 0.00
-        timerStarted = False
-        timerContainer.subheader(timer.__round__(2))
-
-
         with elements("callbaks_hotkey"):
+
+            timerContainer = st.empty()
+            timer = 0.00
+            timerStarted = False
+            timerContainer.subheader(timer.__round__(2))
+
             def spacePressed():
                 global timerStarted
                 if timerStarted == False:
@@ -47,9 +47,8 @@ try:
                 timer += 0.01
                 timerContainer.subheader(timer.__round__(2))
                 sleep(0.01)
-                if on_press_key("space"):
+                if is_pressed("space"):
                     timerStarted = False
-
 
 
 except:
