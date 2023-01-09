@@ -42,6 +42,9 @@ try:
                     timerStarted = True
             
             event.Hotkey("space", spacePressed)
+            while timerStarted == True:
+                if is_pressed("space"):
+                    pass
 
             while timerStarted == True:
                 timer += 0.01
