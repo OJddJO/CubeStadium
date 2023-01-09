@@ -56,9 +56,7 @@ try:
             st.success("Time registered !")
 
         startStop = st.empty()
-        if startStop.button("Start", on_click=timerFunc):
-            if st.session_state.timerStarted == False:
-                st.session_state.timerStarted = True
+        startStop.button("Start", on_click=timerFunc)
 
 
 
