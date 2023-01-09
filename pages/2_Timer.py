@@ -1,5 +1,6 @@
 import streamlit as st
 from getScrambles import getScramble
+import asyncio
 from time import sleep
 
 title = "Timer"
@@ -32,6 +33,18 @@ try:
         timer = 0.00
         timerStarted = False
         timerContainer.subheader(str(timer).format("0.3f"))
+
+        async def timerFunc():
+            global timer
+            global timerStarted
+            while timerStarted:
+                timer += 0.01
+                timerContainer.subheader(str(timer).format("0.3f"))
+                await asyncio.sleep(0.01)
+        
+        if timerContainer.button("Start"):
+            timerStarted = True
+            asyncio.run(timerFunc())
 
 
 except Exception as e:
