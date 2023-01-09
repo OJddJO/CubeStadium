@@ -2,7 +2,6 @@ import streamlit as st
 from getScrambles import getScramble
 from streamlit_elements import elements, event
 from time import sleep
-from keyboard import is_pressed
 
 title = "Timer"
 st.set_page_config(page_title=title, page_icon="⏱️")
@@ -40,8 +39,9 @@ try:
                 global timerStarted
                 if timerStarted == False:
                     timerStarted = True
-                while is_pressed("space"):
-                    pass
+                    sleep(0.5)
+                else:
+                    timerStarted = False
             
             event.Hotkey("space", spacePressed)
 
@@ -49,8 +49,6 @@ try:
                 timer += 0.01
                 timerContainer.subheader(timer.__round__(2))
                 sleep(0.01)
-                if is_pressed("space"):
-                    timerStarted = False
 
 
 except Exception as e:
