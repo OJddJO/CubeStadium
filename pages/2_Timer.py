@@ -59,7 +59,7 @@ try:
             st.session_state.timerStarted = False
             st.session_state.scramble = getScramble(int(scrambleSizeOption))
             scrambleContainer.subheader(st.session_state.scramble)
-            st.success("Time registered !")
+            st.success("Time not registered !")
 
         startStop = st.empty()
         startStop.button("Start", on_click=timerFunc)
