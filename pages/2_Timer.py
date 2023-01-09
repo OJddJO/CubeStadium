@@ -54,14 +54,13 @@ try:
                     st.session_state.scramble = getScramble(int(scrambleSizeOption))
                     scrambleContainer.subheader(st.session_state.scramble)
                 sleep(0.01)
-            return st.session_state.scramble
 
         startStop = st.empty()
         if startStop.button("Start"):
             if st.session_state.timerStarted == False:
                 st.session_state.timerStarted = True
-                st.session_state.scramble = timerFunc()
-                scrambleContainer.subheader(st.session_state.scramble)
+                timerFunc()
+                st.success("Time registered !")
             
 
 except Exception as e:
