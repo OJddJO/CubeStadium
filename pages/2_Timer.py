@@ -1,6 +1,5 @@
 import streamlit as st
 from getScrambles import getScramble
-from streamlit_elements import elements, event
 from time import sleep
 
 title = "Timer"
@@ -28,27 +27,11 @@ try:
             scrambleContainer.subheader(getScramble(int(scrambleSizeOption)))
         
         # timer
-        with elements("callbacks_hotkey"):
 
-            timerContainer = st.empty()
-            timer = 0.00
-            timerStarted = False
-            timerContainer.subheader(timer.__round__(2))
-
-            def spacePressed():
-                global timerStarted
-                if timerStarted == False:
-                    timerStarted = True
-                    sleep(0.5)
-                else:
-                    timerStarted = False
-            
-            event.Hotkey("space", spacePressed)
-
-            while timerStarted == True:
-                timer += 0.01
-                timerContainer.subheader(timer.__round__(2))
-                sleep(0.01)
+        timerContainer = st.empty()
+        timer = 0.00
+        timerStarted = False
+        timerContainer.subheader(timer.__round__(2))
 
 
 except Exception as e:
