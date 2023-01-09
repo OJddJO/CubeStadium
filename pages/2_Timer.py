@@ -52,10 +52,10 @@ try:
                 if buttonState:
                     # stop timer
                     st.session_state.timerStarted = False
+                    # get new scramble
+                    st.session_state.scramble = getScramble(int(scrambleSizeOption))
+                    scrambleContainer.subheader(st.session_state.scramble)
                 await asyncio.sleep(0.01)
-            # get new scramble
-            st.session_state.scramble = getScramble(int(scrambleSizeOption))
-            scrambleContainer.subheader(st.session_state.scramble)
 
         buttonCol1, buttonCol2 = st.columns(2)
         startStop = buttonCol1.empty()
