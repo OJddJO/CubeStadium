@@ -1,3 +1,5 @@
 streamlit == 1.16.0
 streamlit_authenticator == 0.1.5
+streamlit-elements == 0.1.0
+keyboard == 0.13.5
 deta
