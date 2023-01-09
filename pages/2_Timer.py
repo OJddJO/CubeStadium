@@ -30,7 +30,12 @@ try:
         # timer
 
         timerContainer = st.empty()
-        timerContainer.subheader("{:.2f}".format(st.session_state.timer))
+        try:
+            timerContainer.subheader("{:.2f}".format(st.session_state.timer))
+        except:
+            st.session_state.timer = 0.00
+            st.session_state.timerStarted = False
+            timerContainer.subheader("{:.2f}".format(st.session_state.timer))
 
         async def timerFunc():
             buttonState = button.button("Stop")
@@ -42,15 +47,13 @@ try:
                 if buttonState:
                     st.session_state.timerStarted = False
                     break
-        
-        try:
-            button = st.empty()
-            if button.button("Start"):
-                if st.session_state.timerStarted == False:
-                    st.session_state.timerStarted = True
-                    asyncio.run(timerFunc())
-        except:
-            st.session_state.timerStarted = False
+
+        button = st.empty()
+        if button.button("Start"):
+            if st.session_state.timerStarted == False:
+                st.session_state.timerStarted = True
+                asyncio.run(timerFunc())
+            
 
 except Exception as e:
     st.error("Please go to home page first")
