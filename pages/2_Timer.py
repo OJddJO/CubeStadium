@@ -40,7 +40,7 @@ try:
         # async timer to allow update
         async def timerFunc():
             # init timer with scramble and reset timer
-            buttonState = button.button("Stop")
+            buttonState = startStop.button("Stop")
             scrambleContainer.subheader(st.session_state.scramble)
             st.session_state.timer = 0.00
             # start timer
@@ -54,10 +54,11 @@ try:
                 await asyncio.sleep(0.01)
             # get new scramble
             st.session_state.scramble = getScramble(int(scrambleSizeOption))
-            button.button("Next Scramble")
+            buttonCol2.button("Next Scramble")
 
-        button = st.empty()
-        if button.button("Start"):
+        buttonCol1, buttonCol2 = st.columns(2)
+        startStop = buttonCol1.empty()
+        if startStop.button("Start"):
             if st.session_state.timerStarted == False:
                 st.session_state.timerStarted = True
                 asyncio.run(timerFunc())
