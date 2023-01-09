@@ -16,10 +16,9 @@ try:
 
         #main
         #optionsExpander = st.expander("Scramble Options", expanded=True)
-        scrambleSizeOption = st.selectbox("Scramble size", ["15", "20", "25", "30"], key="scrambleSizeOption")
-
         scrambleContainer = st.empty()
 
+        scrambleSizeOption = st.selectbox("Scramble size", ["15", "20", "25", "30"], key="scrambleSizeOption")
         if st.button("Re-Scramble"):
             st.session_state.scramble = getScramble(int(scrambleSizeOption))
             scrambleContainer.subheader(st.session_state.scramble)
