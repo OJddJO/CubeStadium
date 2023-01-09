@@ -43,12 +43,12 @@ try:
                 await asyncio.sleep(0.01)
         
         buttonsContainer = st.columns(3)
-        if timerContainer.button("Start"):
+        if buttonsContainer.button("Start"):
             if timerStarted == False:
                 timerStarted = True
                 asyncio.run(timerFunc())
 
-        if timerContainer.button("Stop"):
+        if buttonsContainer.button("Stop"):
             timerStarted = False
             timerContainer.subheader(str(timer).format("%.3f"))
             timer = 0.00
