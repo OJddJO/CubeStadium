@@ -13,11 +13,12 @@ try:
 
     if st.session_state.authentication_status == True:
         #main
-        st.sidebar.title("Scramble Options")
+        scrambleExpander = st.expander("Scramble Options")
+        scrambleSizeOption = scrambleExpander.selectbox("Scramble size", ["15", "20", "25", "30"], key="scrambleSizeOption")
+
         scrambleContainer = st.empty()
 
-        scrambleSizeOption = st.sidebar.selectbox("Scramble size", ["15", "20", "25", "30"], key="scrambleSizeOption")
-        if st.sidebar.button("Re-Scramble"):
+        if scrambleExpander.button("Re-Scramble"):
             st.session_state.scramble = getScramble(int(scrambleSizeOption))
             scrambleContainer.subheader(st.session_state.scramble)
 
@@ -58,7 +59,6 @@ try:
 
         startStop = st.empty()
         startStop.button("Start", on_click=timerFunc)
-
 
 
         st.session_state.authenticator.logout("Logout", "sidebar")
