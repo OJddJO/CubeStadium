@@ -12,9 +12,9 @@ if st.session_state.authentication_status == True:
     st.session_state.authenticator.logout("Logout", "sidebar")
 
     #main
-    scrambleCol, scrableSizeOption, rescrambleCol = st.columns(3)
+    scrableSizeOption, rescrambleCol = st.columns(2)
     try:
-        scrambleContainer = scrambleCol.empty()
+        scrambleContainer = st.empty()
         scrambleContainer.subheader(getScramble(st.session_state.scrambleSizeOption))
     except:
         scrambleContainer.subheader(getScramble())
