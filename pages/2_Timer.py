@@ -28,8 +28,8 @@ try:
 
         timerContainer = st.empty()
         try:
-            timerContainer.subheader("{:.2f}".format(st.session_state.timer))
             scrambleContainer.subheader(st.session_state.scramble)
+            timerContainer.subheader("{:.2f}".format(st.session_state.timer))
         except:
             st.session_state.scramble = getScramble()
             st.session_state.timer = 0.00
