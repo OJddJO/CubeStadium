@@ -52,7 +52,7 @@ try:
                 t2 = time()
                 timer = t2 - t1
                 sleep(0.01)
-            st.session_state.timer = t2-t1
+            st.session_state.timer = timer
         
         def stopTimer():
             st.session_state.timerStarted = False
