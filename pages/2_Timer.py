@@ -27,12 +27,12 @@ try:
         st.session_state.timerStarted = False
         try:
             scrambleContainer.subheader(st.session_state.scramble)
-            timerContainer.subheader("{:.2f}".format(st.session_state.timer))
+            timerContainer.title("{:.2f}".format(st.session_state.timer))
         except:
             st.session_state.scramble = getScramble()
             st.session_state.timer = 0.00
             scrambleContainer.subheader(st.session_state.scramble)
-            timerContainer.subheader("{:.2f}".format(st.session_state.timer))
+            timerContainer.title("{:.2f}".format(st.session_state.timer))
 
 
         def timerFunc():
@@ -44,7 +44,7 @@ try:
             run = True
             while run:
                 st.session_state.timer += 0.01
-                timerContainer.subheader("{:.2f}".format(st.session_state.timer))
+                timerContainer.title("{:.2f}".format(st.session_state.timer))
                 # stop button timer
                 if buttonState:
                     # stop timer
