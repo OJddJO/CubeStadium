@@ -40,7 +40,7 @@ try:
                 global timerStarted
                 if timerStarted == False:
                     timerStarted = True
-                if is_pressed("space"):
+                while is_pressed("space"):
                     pass
             
             event.Hotkey("space", spacePressed)
