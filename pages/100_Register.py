@@ -22,4 +22,5 @@ if st.session_state.authentication_status == None or st.session_state.authentica
             st.error("Please fill all the fields")
         else:
             st.success("Registered !")
+            st.info("You can now login at the home page")
             _auth.insertUser(name, username, password)
