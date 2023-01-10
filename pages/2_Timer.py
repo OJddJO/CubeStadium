@@ -61,11 +61,10 @@ try:
             # start timer
             run = True
             t1 = time()
-            t2 = time()
             while run:
                 timerContainer.title("{:.2f}".format(st.session_state.timer))
-                st.session_state.timer = t2 - t1
                 t2 = time()
+                st.session_state.timer = t2 - t1
                 # stop button timer
                 if buttonState:
                     # stop timer
