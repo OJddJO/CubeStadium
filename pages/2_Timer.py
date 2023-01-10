@@ -23,7 +23,8 @@ try:
             scrambleContainer.subheader(st.session_state.scramble)
 
         # timer
-        timerContainer = st.empty()
+        col1, centerTimer, col2 = st.columns(3)
+        timerContainer = centerTimer.empty()
         try:
             scrambleContainer.subheader(st.session_state.scramble)
             timerContainer.title("{:.2f}".format(st.session_state.timer))
