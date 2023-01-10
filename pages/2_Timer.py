@@ -23,9 +23,7 @@ try:
             scrambleContainer.subheader(st.session_state.scramble)
 
         # timer
-        col1, centerTimer, col2 = st.columns(3)
-        col1.write(" ")
-        timerContainer = centerTimer.empty()
+        timerContainer = st.empty()
         try:
             scrambleContainer.subheader(st.session_state.scramble)
             timerContainer.title("{:.2f}".format(st.session_state.timer))
@@ -78,7 +76,7 @@ try:
             scrambleContainer.subheader(st.session_state.scramble)
             st.success("Time not registered !")
 
-        startStop = centerTimer.empty()
+        startStop = st.empty()
         startStop.button("Start", on_click=timerFunc)
 
         #spacebar trigger button
