@@ -3,7 +3,9 @@ import streamlit.components.v1 as components
 from time import sleep, time
 from getScrambles import getScramble
 
-st.title("PVP")
+title = "PVP"
+st.set_page_config(page_title=title, page_icon="⚔️")
+st.title(title)
 st.header("Coming soon !")
 try:
     if st.session_state.authentication_status == None or st.session_state.authentication_status == False:
@@ -13,6 +15,7 @@ try:
         #main
         titleCol, createCol = st.columns(2)
         
+        titleCol.title("PVP")
 
 
         st.session_state.authenticator.logout("Logout", "sidebar")
