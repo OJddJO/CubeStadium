@@ -37,6 +37,24 @@ try:
         def timerFunc():
             # init timer with scramble and reset timer
             buttonState = startStop.button("Stop", on_click=stopTimer)
+            components.html(
+            """
+            <script>
+            const doc = window.parent.document;
+            buttons = Array.from(doc.querySelectorAll('button[kind=secondary]'));
+            const stopButton = buttons.find(el => el.innerText === 'Stop');
+            doc.addEventListener('keydown', function(e) {
+                switch (e.keyCode) {
+                    case 32:
+                        stopButton.click();
+                        break;
+                }
+            });
+            </script>
+            """,
+            width=0,
+            height=0,
+            )
             scrambleContainer.subheader(st.session_state.scramble)
             st.session_state.timer = 0.00
             # start timer
@@ -65,25 +83,14 @@ try:
         <script>
         const doc = window.parent.document;
         buttons = Array.from(doc.querySelectorAll('button[kind=secondary]'));
-        try {
-            const startButton = buttons.find(el => el.innerText === 'Start');
-            doc.addEventListener('keydown', function(e) {
-                switch (e.keyCode) {
-                    case 32:
-                        startButton.click();
-                        break;
-                }
-            });
-        } catch {
-            const stopButton = buttons.find(el => el.innerText === 'Stop');
-            doc.addEventListener('keydown', function(e) {
-                switch (e.keyCode) {
-                    case 32:
-                        stopButton.click();
-                        break;
-                }
-            });
-        };
+        const startButton = buttons.find(el => el.innerText === 'Start');
+        doc.addEventListener('keydown', function(e) {
+            switch (e.keyCode) {
+                case 32:
+                    startButton.click();
+                    break;
+            }
+        });
         </script>
         """,
             height=0,
