@@ -14,8 +14,8 @@ try:
     if st.session_state.authentication_status == True:
         #main
         titleCol, createCol = st.columns(2)
-        
-        titleCol.title("PVP")
+        titleCol.subheader("Room List")
+        createCol.button("Create Room")
 
 
         st.session_state.authenticator.logout("Logout", "sidebar")
