@@ -1,4 +1,5 @@
 import streamlit as st
+import streamlit.components.v1 as components
 from getScrambles import getScramble
 from time import sleep, time
 
@@ -58,6 +59,36 @@ try:
 
         startStop = st.empty()
         startStop.button("Start", on_click=timerFunc)
+
+        components.html(
+        """
+        <script>
+        const doc = window.parent.document;
+        buttons = Array.from(doc.querySelectorAll('button[kind=secondary]'));
+        try {
+            const startButton = buttons.find(el => el.innerText === 'Start');
+            doc.addEventListener('keydown', function(e) {
+                switch (e.keyCode) {
+                    case 32:
+                        startButton.click();
+                        break;
+                }
+            });
+        } catch {
+            const stopButton = buttons.find(el => el.innerText === 'Stop');
+            doc.addEventListener('keydown', function(e) {
+                switch (e.keyCode) {
+                    case 32:
+                        stopButton.click();
+                        break;
+                }
+            });
+        };
+        </script>
+        """,
+            height=0,
+            width=0,
+        )
 
 
         st.session_state.authenticator.logout("Logout", "sidebar")
