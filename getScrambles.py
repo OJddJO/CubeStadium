@@ -4,10 +4,11 @@ moves = ("U", "U'", "U2", "D", "D'", "D2", "L", "L'", "L2", "R", "R'", "R2", "F"
 
 def getScramble(times=15):
     scramble = ""
-    lastMove = " "
+    lastMoves = []
     while len(scramble.split(sep=" ")) <= times:
         move = random.choice(moves)
-        if move[0] != lastMove[0]:
+        if not move[0] in lastMoves:
             scramble += move + " "
-            lastMove = move
+            lastMoves[1] = lastMoves[0]
+            lastMoves[0] = move
     return scramble
