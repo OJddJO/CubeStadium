@@ -10,5 +10,5 @@ def getScramble(times=15):
         if not move[0] in lastMoves:
             scramble += move + " "
             lastMoves[1] = lastMoves[0]
-            lastMoves[0] = move
+            lastMoves[0] = move[0]
     return scramble
