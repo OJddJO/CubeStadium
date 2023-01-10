@@ -37,21 +37,22 @@ try:
         def timerFunc():
             # init timer with scramble and reset timer
             buttonState = startStop.button("Stop", on_click=stopTimer)
+            #spacebar trigger button
             components.html(
-            """
-            <script>
-            const doc = window.parent.document;
-            buttons = Array.from(doc.querySelectorAll('button[kind=secondary]'));
-            const stopButton = buttons.find(el => el.innerText === 'Stop');
-            doc.addEventListener('keydown', function(e) {
-                switch (e.keyCode) {
-                    case 32:
-                        stopButton.click();
-                        break;
-                }
-            });
-            </script>
-            """,
+                """
+                <script>
+                const doc = window.parent.document;
+                buttons = Array.from(doc.querySelectorAll('button[kind=secondary]'));
+                const stopButton = buttons.find(el => el.innerText === 'Stop');
+                doc.addEventListener('keydown', function(e) {
+                    switch (e.keyCode) {
+                        case 32:
+                            stopButton.click();
+                            break;
+                    }
+                });
+                </script>
+                """,
             width=0,
             height=0,
             )
@@ -78,24 +79,27 @@ try:
         startStop = st.empty()
         startStop.button("Start", on_click=timerFunc)
 
+        #spacebar trigger button
         components.html(
-        """
-        <script>
-        const doc = window.parent.document;
-        buttons = Array.from(doc.querySelectorAll('button[kind=secondary]'));
-        const startButton = buttons.find(el => el.innerText === 'Start');
-        doc.addEventListener('keydown', function(e) {
-            switch (e.keyCode) {
-                case 32:
-                    startButton.click();
-                    break;
-            }
-        });
-        </script>
-        """,
+            """
+            <script>
+            const doc = window.parent.document;
+            buttons = Array.from(doc.querySelectorAll('button[kind=secondary]'));
+            const startButton = buttons.find(el => el.innerText === 'Start');
+            doc.addEventListener('keydown', function(e) {
+                switch (e.keyCode) {
+                    case 32:
+                        startButton.click();
+                        break;
+                }
+            });
+            </script>
+            """,
             height=0,
             width=0,
         )
+
+        st.info("You can use the spacebar to start/stop the timer")
 
 
         st.session_state.authenticator.logout("Logout", "sidebar")
