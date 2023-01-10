@@ -6,6 +6,8 @@ import _auth
 title = "Cube Stadium"
 st.set_page_config(page_title=title, page_icon="👋")
 st.title(title)
+st.subheader("A simple speedcubing website !")
+st.info("Still in developpment ... 🛠️")
 
 # authentication
 get_users = _auth.fetchAllUsers()

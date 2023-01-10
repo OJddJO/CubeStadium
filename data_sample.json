@@ -7,3 +7,21 @@
     "list_ao5": [0.00],
     "list_ao12": [0.00]
 }
+
+{
+    "room": "room name",
+    "admin": "admin name",
+    "nb_users": 1,
+    "users": [
+        {
+            "username": "username",
+            "time": [],
+        },
+        {
+            "username": "username",
+            "time": [],
+        }
+    ],
+    "scramble": "scramble",
+    "winner": "username"
+}
