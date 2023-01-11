@@ -72,7 +72,6 @@ try:
         mainContainer = st.empty()
 
         createRoomContainer = st.expander("Create Room")
-        createRoomContainer.subheader("Create Room")
         roomName = createRoomContainer.text_input("Room Name")
         maxUsers = createRoomContainer.number_input("Max Users", min_value=2, max_value=10, value=2)
         roomPassword = createRoomContainer.number_input("Room Password (6 digits max)", min_value=0, max_value=999999)
