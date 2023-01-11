@@ -31,10 +31,10 @@ try:
             #create expander for each room
             for name in roomNames:
                 tmp = roomListContainer.expander(name)
-                tmp.subheader("Admin: " + roomAdmin[roomNames.index(name)])
-                tmp.subheader("Max Users: " + str(roomMaxUsers[roomNames.index(name)]))
-                tmp.subheader("Current Users: " + str(roomCurrentUsers[roomNames.index(name)]))
-                tmp.subheader("Status: " + roomStatus[roomNames.index(name)])
+                tmp.caption("Admin: " + roomAdmin[roomNames.index(name)])
+                tmp.caption("Max Users: " + str(roomMaxUsers[roomNames.index(name)]))
+                tmp.caption("Current Users: " + str(roomCurrentUsers[roomNames.index(name)]))
+                tmp.caption("Status: " + roomStatus[roomNames.index(name)])
                 tmp.button("Join", on_click=joinRoom, args=(name, roomPassword[roomNames.index(name)]))
 
 
