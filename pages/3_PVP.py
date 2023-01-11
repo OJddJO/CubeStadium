@@ -69,8 +69,6 @@ try:
         titleCol.subheader("Room List")
         refreshCol.button("Refresh", on_click=refresh)
 
-        mainContainer = st.empty()
-
         createRoomContainer = st.expander("Create Room")
         roomName = createRoomContainer.text_input("Room Name")
         maxUsers = createRoomContainer.number_input("Max Users", min_value=2, max_value=10, value=2)
@@ -81,6 +79,8 @@ try:
             createRoomContainer.success("Created room " + roomName)
             initRoomPage()
         createRoomContainer.button("Create", on_click=createRoom)
+
+        mainContainer = st.empty()
 
         refresh() # refresh room list
 
