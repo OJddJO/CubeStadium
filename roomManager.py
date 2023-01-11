@@ -29,7 +29,7 @@ def updateRoom(roomName, updates):
     return db.update(updates=updates, key=roomName)
 
 def leaveRoom(roomName, user):
-    room = db.get(roomName).items[0]
+    room = getRoom(roomName)
     if user == room["data"]["admin"]:
         return db.delete(roomName)
     else:
@@ -47,10 +47,13 @@ def deleteRoom(roomName):
     return db.delete(roomName)
 
 def getRoom(roomName):
-    return db.get(roomName).items[0]
+    for room in fetchAllRooms():
+        if room["key"] == roomName:
+            return room
+
 
 def joinRoom(roomName, user):
-    room = db.get(roomName).items[0]
+    room = getRoom(roomName)
     newUsers = room["data"]["users"]
     userNb = room["data"]["userNb"] + 1
     newUsers.append({"username": user, "time": None})
