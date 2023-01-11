@@ -47,7 +47,7 @@ try:
             cancel = btnCancel.button("Cancel")
             run = True
             while run:
-                if btnPressed:
+                if btnPressed == False:
                     if inputPassword == password:
                         room = roomManager.getRoom(name)
                         if room["data"]["userNb"] < room["data"]["maxUsers"]:
