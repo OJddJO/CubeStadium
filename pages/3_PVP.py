@@ -28,9 +28,6 @@ try:
                 st.success("Created room " + roomName)
                 initRoomPage()
             btnState = btnCancel.button("Cancel")
-            while run:
-                if btnState:
-                    run = False
 
 
         def refresh():
@@ -74,9 +71,6 @@ try:
                 else:
                     joinRoomContainer.error("Wrong password")
             btnState = btnCancel.button("Cancel")
-            while run:
-                if btnState:
-                    run = False
 
 
         def initRoomPage():
