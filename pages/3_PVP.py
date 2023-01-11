@@ -70,7 +70,7 @@ try:
         maxUsers = createRoomContainer.number_input("Max Users", min_value=2, max_value=10, value=2)
         roomPassword = createRoomContainer.number_input("Room Password (6 digits max)", min_value=0, max_value=999999)
         scrambleSize = createRoomContainer.selectbox("Scramble Size", ["15", "20", "25", "30"], key="scrambleSizeOption")
-        def createRoom():
+        def createRoom(roomName=roomName, roomPassword=roomPassword, maxUsers=maxUsers, scrambleSize=scrambleSize):
             roomManager.createRoom(roomName, st.session_state.username, roomPassword, maxUsers, getScramble(int(scrambleSize)))
             createRoomContainer.success("Created room " + roomName)
             initRoomPage()
