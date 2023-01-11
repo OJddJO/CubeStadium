@@ -7,7 +7,7 @@ title = "Cube Stadium"
 st.set_page_config(page_title=title, page_icon="👋")
 st.title(title)
 st.info("Still in development ... 🛠️")
-st.sidebar.markdown("**Made with ❤️ by** ***OJddJO***")
+st.sidebar.markdown("**Made with ❤️ by** [***OJddJO***](https://github.com/OJddJO/)")
 
 # authentication
 get_users = _auth.fetchAllUsers()
