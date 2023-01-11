@@ -74,7 +74,7 @@ try:
             roomManager.createRoom(roomName, st.session_state.username, roomPassword, maxUsers, getScramble(int(scrambleSize)))
             createRoomContainer.success("Created room " + roomName)
             initRoomPage()
-        createRoomContainer.button("Create", on_click=createRoom)
+        createRoomContainer.button("Create", on_click=createRoom, args=(roomName, roomPassword, maxUsers, scrambleSize))
 
         #room list
         titleCol, refreshCol = st.columns(2)
