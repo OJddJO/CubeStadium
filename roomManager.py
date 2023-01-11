@@ -6,7 +6,7 @@ db = conn.Base("cubestadium_pvpRoom")
 
 def createRoom(roomName, user, password, maxUsers, scramble):
     roomData = {"key": roomName, "admin": user, "password": password, "userNb": 1, "maxUsers": maxUsers, "users": [{"username": user, "time": None}], "status": "waiting", "scramble": scramble, "winner": None}
-    return db.put(roomData)
+    return db.put({"key": roomName, "admin": user, "password": password, "userNb": 1, "maxUsers": maxUsers, "users": [{"username": user, "time": None}], "status": "waiting", "scramble": scramble, "winner": None})
 
 def fetchAllRooms():
     return db.fetch().items
