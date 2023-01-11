@@ -69,7 +69,7 @@ try:
 
         mainContainer = st.empty()
 
-        createRoomContainer = mainContainer.expander()
+        createRoomContainer = mainContainer.expander("Create Room")
         createRoomContainer.subheader("Create Room")
         roomName = createRoomContainer.text_input("Room Name")
         maxUsers = createRoomContainer.number_input("Max Users", min_value=2, max_value=10, value=2)
