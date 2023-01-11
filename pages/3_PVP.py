@@ -25,7 +25,7 @@ try:
             roomNames = [name["key"] for name in get_rooms]
             roomAdmin = [admin["data"]["admin"] for admin in get_rooms]
             roomMaxUsers = [maxUsers["data"]["maxUsers"] for maxUsers in get_rooms]
-            roomCurrentUsers = [currentUsers["data"]["currentUsers"] for currentUsers in get_rooms]
+            roomCurrentUsers = [currentUsers["data"]["userNb"] for currentUsers in get_rooms]
             roomPassword = [password["data"]["password"] for password in get_rooms]
             roomStatus = [status["data"]["status"] for status in get_rooms]
             #create expander for each room
