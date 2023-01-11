@@ -20,6 +20,7 @@ try:
         def refresh():
             get_rooms = roomManager.fetchAllRooms()
             roomListContainer = mainContainer.container()
+            get_rooms = [room for room in get_rooms if room["status"] == "waiting"]
             roomNames = [name["key"] for name in get_rooms]
             roomAdmin = [admin["admin"] for admin in get_rooms]
             roomMaxUsers = [maxUsers["maxUsers"] for maxUsers in get_rooms]

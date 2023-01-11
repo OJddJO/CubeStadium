@@ -5,22 +5,7 @@ conn = deta.Deta(os.environ["db_key"])
 db = conn.Base("cubestadium_pvpRoom")
 
 def createRoom(roomName, user, password, maxUsers, scramble):
-    roomData = {
-        "key": roomName,
-        "admin": user,
-        "password": password,
-        "userNb": 1,
-        "maxUsers": maxUsers,
-        "users": [
-            {
-                "username": user,
-                "time": None
-            }
-        ],
-        "status": "waiting",
-        "scramble": scramble,
-        "winner": None
-    }
+    roomData = {"key": roomName, "admin": user, "password": password, "userNb": 1, "maxUsers": maxUsers, "users": [{"username": user, "time": None}], "status": "waiting", "scramble": scramble, "winner": None}
     return db.put(roomData)
 
 def fetchAllRooms():
