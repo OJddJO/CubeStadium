@@ -21,13 +21,13 @@ try:
         def refresh():
             get_rooms = roomManager.fetchAllRooms()
             roomListContainer = mainContainer.container()
-            get_rooms = [room for room in get_rooms if room["status"] == "waiting"]
+            get_rooms = [room for room in get_rooms if room["data"]["status"] == "waiting"]
             roomNames = [name["key"] for name in get_rooms]
-            roomAdmin = [admin["admin"] for admin in get_rooms]
-            roomMaxUsers = [maxUsers["maxUsers"] for maxUsers in get_rooms]
-            roomCurrentUsers = [currentUsers["currentUsers"] for currentUsers in get_rooms]
-            roomPassword = [password["password"] for password in get_rooms]
-            roomStatus = [status["status"] for status in get_rooms]
+            roomAdmin = [admin["data"]["admin"] for admin in get_rooms]
+            roomMaxUsers = [maxUsers["data"]["maxUsers"] for maxUsers in get_rooms]
+            roomCurrentUsers = [currentUsers["data"]["currentUsers"] for currentUsers in get_rooms]
+            roomPassword = [password["data"]["password"] for password in get_rooms]
+            roomStatus = [status["data"]["status"] for status in get_rooms]
             #create expander for each room
             for name in roomNames:
                 tmp = roomListContainer.expander(name)
@@ -49,7 +49,7 @@ try:
             if btnJoin.button("Join"):
                 if inputPassword == password:
                     room = roomManager.getRoom(name)
-                    if room["currentUsers"] < room["maxUsers"]:
+                    if room["data"]["currentUsers"] < room["data"]["maxUsers"]:
                         roomManager.joinRoom(name)
                         joinRoomContainer.success("Joined room " + name)
                         initRoomPage()

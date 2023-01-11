@@ -5,8 +5,22 @@ conn = deta.Deta(os.environ["db_key"])
 db = conn.Base("cubestadium_pvpRoom")
 
 def createRoom(roomName, user, password, maxUsers, scramble):
-    roomData = {"key": roomName, "admin": user, "password": password, "userNb": 1, "maxUsers": maxUsers, "users": [{"username": user, "time": None}], "status": "waiting", "scramble": scramble, "winner": None}
-    return db.put({"key": roomName, "admin": user, "password": password, "userNb": 1, "maxUsers": maxUsers, "users": [{"username": user, "time": None}], "status": "waiting", "scramble": scramble, "winner": None})
+    roomData = {
+        "admin": user,
+        "password": password,
+        "userNb": 1,
+        "maxUsers": maxUsers,
+        "users": [
+            {
+                "username": user,
+                "time": None
+            }
+        ],
+        "status": "waiting",
+        "scramble": scramble,
+        "winner": None
+    }
+    return db.put({"key": roomName, "data": roomData})
 
 def fetchAllRooms():
     return db.fetch().items
@@ -16,15 +30,18 @@ def updateRoom(roomName, updates):
 
 def leaveRoom(roomName, user):
     room = db.get(roomName).items[0]
-    newUsers = []
-    for u in room["users"]:
-        if u["username"] != user:
-            newUsers.append(u)
-    userNb = room["userNb"] - 1
-    if user == room["admin"]:
+    if user == room["data"]["admin"]:
         return db.delete(roomName)
     else:
-        return db.update(updates={"users": newUsers, "userNb": userNb}, key=roomName)
+        newUsers = []
+        for u in room["data"]["users"]:
+            if u["data"]["username"] != user:
+                newUsers.append(u)
+        userNb = room["data"]["userNb"] - 1
+        update = room["data"]
+        update["users"] = newUsers
+        update["userNb"] = userNb
+        return db.update(updates={"data": update}, key=roomName)
 
 def deleteRoom(roomName):
     return db.delete(roomName)
@@ -34,7 +51,10 @@ def getRoom(roomName):
 
 def joinRoom(roomName, user):
     room = db.get(roomName).items[0]
-    newUsers = room["users"]
-    userNb = room["userNb"] + 1
+    newUsers = room["data"]["users"]
+    userNb = room["data"]["userNb"] + 1
     newUsers.append({"username": user, "time": None})
-    return db.update(updates={"users": newUsers, "userNb": userNb}, key=roomName)
+    update = room["data"]
+    update["users"] = newUsers
+    update["userNb"] = userNb
+    return db.update(updates={"data": update}, key=roomName)
