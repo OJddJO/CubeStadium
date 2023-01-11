@@ -16,19 +16,20 @@ try:
         #main
         def createRoom():
             run = True
+            createRoomContainer = mainContainer.container()
+            createRoomContainer.subheader("Create Room")
+            roomName = createRoomContainer.text_input("Room Name")
+            maxUsers = createRoomContainer.number_input("Max Users", min_value=2, max_value=10, value=2)
+            roomPassword = createRoomContainer.number_input("Room Password (6 digits max)", min_value=0, max_value=999999)
+            scrambleSize = createRoomContainer.selectbox("Scramble Size", ["15", "20", "25", "30"], key="scrambleSizeOption")
+            btnCreate, btnCancel = createRoomContainer.columns(2)
+            if btnCreate.button("Create"):
+                roomManager.createRoom(roomName, st.session_state.username, roomPassword, maxUsers, getScramble(int(scrambleSize)))
+                st.success("Created room " + roomName)
+                initRoomPage()
+            btnState = btnCancel.button("Cancel")
             while run:
-                createRoomContainer = mainContainer.container()
-                createRoomContainer.subheader("Create Room")
-                roomName = createRoomContainer.text_input("Room Name")
-                maxUsers = createRoomContainer.number_input("Max Users", min_value=2, max_value=10, value=2)
-                roomPassword = createRoomContainer.number_input("Room Password (6 digits max)", min_value=0, max_value=999999)
-                scrambleSize = createRoomContainer.selectbox("Scramble Size", ["15", "20", "25", "30"], key="scrambleSizeOption")
-                btnCreate, btnCancel = createRoomContainer.columns(2)
-                if btnCreate.button("Create"):
-                    roomManager.createRoom(roomName, st.session_state.username, roomPassword, maxUsers, getScramble(int(scrambleSize)))
-                    st.success("Created room " + roomName)
-                    initRoomPage()
-                if btnCancel.button("Cancel"):
+                if btnState:
                     run = False
 
 
@@ -54,28 +55,28 @@ try:
 
         def joinRoom(name, password):
             run = True
-            while run:
-                joinRoomContainer = mainContainer.container()
-                joinRoomContainer.subheader("Join Room")
-                joinRoomContainer.subheader(name)
-                inputPassword = joinRoomContainer.number_input("Room Password", min_value=0, max_value=999999)
-                
-                btnJoin, btnCancel = joinRoomContainer.columns(2)
-                if btnJoin.button("Join"):
-                    if inputPassword == password:
-                        room = roomManager.getRoom(name)
-                        if room["currentUsers"] < room["maxUsers"]:
-                            roomManager.joinRoom(name)
-                            joinRoomContainer.success("Joined room " + name)
-                            initRoomPage()
-                            run = False
-                        else:
-                            joinRoomContainer.error("Room is full")
+            joinRoomContainer = mainContainer.container()
+            joinRoomContainer.subheader("Join Room")
+            joinRoomContainer.subheader(name)
+            inputPassword = joinRoomContainer.number_input("Room Password", min_value=0, max_value=999999)
+            
+            btnJoin, btnCancel = joinRoomContainer.columns(2)
+            if btnJoin.button("Join"):
+                if inputPassword == password:
+                    room = roomManager.getRoom(name)
+                    if room["currentUsers"] < room["maxUsers"]:
+                        roomManager.joinRoom(name)
+                        joinRoomContainer.success("Joined room " + name)
+                        initRoomPage()
+                        run = False
                     else:
-                        joinRoomContainer.error("Wrong password")
-                if btnCancel.button("Cancel"):
+                        joinRoomContainer.error("Room is full")
+                else:
+                    joinRoomContainer.error("Wrong password")
+            btnState = btnCancel.button("Cancel")
+            while run:
+                if btnState:
                     run = False
-                
 
 
         def initRoomPage():
