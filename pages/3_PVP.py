@@ -37,26 +37,30 @@ try:
 
 
         def joinRoom(name, password):
-            run = True
             joinRoomContainer = mainContainer.container()
             joinRoomContainer.subheader("Join Room")
             joinRoomContainer.subheader(name)
             inputPassword = joinRoomContainer.number_input("Room Password", min_value=0, max_value=999999)
             
             btnJoin, btnCancel = joinRoomContainer.columns(2)
-            if btnJoin.button("Join"):
-                if inputPassword == password:
-                    room = roomManager.getRoom(name)
-                    if room["data"]["userNb"] < room["data"]["maxUsers"]:
-                        roomManager.joinRoom(name, st.session_state.username)
-                        joinRoomContainer.success("Joined room " + name)
-                        initRoomPage()
-                        run = False
+            btnPressed = btnJoin.button("Join")
+            cancel = btnCancel.button("Cancel")
+            run = True
+            while run:
+                if btnPressed:
+                    if inputPassword == password:
+                        room = roomManager.getRoom(name)
+                        if room["data"]["userNb"] < room["data"]["maxUsers"]:
+                            roomManager.joinRoom(name, st.session_state.username)
+                            joinRoomContainer.success("Joined room " + name)
+                            initRoomPage()
+                            run = False
+                        else:
+                            joinRoomContainer.error("Room is full")
                     else:
-                        joinRoomContainer.error("Room is full")
-                else:
-                    joinRoomContainer.error("Wrong password")
-            btnState = btnCancel.button("Cancel")
+                        joinRoomContainer.error("Wrong password")
+                if cancel:
+                    run = False
 
 
         def initRoomPage():
