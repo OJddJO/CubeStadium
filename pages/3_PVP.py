@@ -5,7 +5,7 @@ from getScrambles import getScramble
 import roomManager
 
 title = "PVP"
-st.set_page_config(page_title=title, page_icon=":fire:")
+st.set_page_config(page_title=title, page_icon=st.image("https://emojipedia-us.s3.amazonaws.com/source/skype/289/crossed-swords_2694-fe0f.png"))
 st.title(title)
 st.header("Coming soon !")
 st.sidebar.markdown("**Made with ❤️ by** [***OJddJO***](https://github.com/OJddJO/)")
