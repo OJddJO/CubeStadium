@@ -4,6 +4,7 @@ import _auth
 title = "Register"
 st.set_page_config(page_title=title, page_icon="🗒️")
 st.title(title)
+st.sidebar.markdown("**Made with ❤️ by** [***OJddJO***](https://github.com/OJddJO/)")
 
 def regPage():
     # main

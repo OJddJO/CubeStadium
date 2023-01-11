@@ -6,6 +6,7 @@ from time import sleep, time
 title = "Timer"
 st.set_page_config(page_title=title, page_icon="⏱️")
 st.title(title)
+st.sidebar.markdown("**Made with ❤️ by** [***OJddJO***](https://github.com/OJddJO/)")
 
 try:
     if st.session_state.authentication_status == None or st.session_state.authentication_status == False:
