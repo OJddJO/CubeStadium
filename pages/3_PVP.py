@@ -46,8 +46,7 @@ try:
                 tmp.subheader("Max Users: " + str(roomMaxUsers[roomNames.index(name)]))
                 tmp.subheader("Current Users: " + str(roomCurrentUsers[roomNames.index(name)]))
                 tmp.subheader("Status: " + roomStatus[roomNames.index(name)])
-                if tmp.button("Join"):
-                    joinRoom(name, roomPassword[roomNames.index(name)])
+                tmp.button("Join", on_click=joinRoom, args=(name, roomPassword[roomNames.index(name)]))
 
 
         def joinRoom(name, password):
