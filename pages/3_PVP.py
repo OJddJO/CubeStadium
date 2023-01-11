@@ -15,8 +15,6 @@ try:
 
     if st.session_state.authentication_status == True:
         #main
-            
-
 
         def refresh():
             get_rooms = roomManager.fetchAllRooms()
@@ -64,11 +62,7 @@ try:
         def initRoomPage():
             pass
 
-
-        titleCol, refreshCol = st.columns(2)
-        titleCol.subheader("Room List")
-        refreshCol.button("Refresh", on_click=refresh)
-
+        #create room
         createRoomContainer = st.expander("Create Room")
         roomName = createRoomContainer.text_input("Room Name")
         maxUsers = createRoomContainer.number_input("Max Users", min_value=2, max_value=10, value=2)
@@ -79,6 +73,11 @@ try:
             createRoomContainer.success("Created room " + roomName)
             initRoomPage()
         createRoomContainer.button("Create", on_click=createRoom)
+
+        #room list
+        titleCol, refreshCol = st.columns(2)
+        titleCol.subheader("Room List")
+        refreshCol.button("Refresh", on_click=refresh)
 
         mainContainer = st.empty()
 
