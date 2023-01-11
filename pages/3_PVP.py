@@ -14,26 +14,6 @@ try:
 
     if st.session_state.authentication_status == True:
         #main
-        def createRoom():
-            run = True
-            createRoomContainer = mainContainer.container()
-            createRoomContainer.subheader("Create Room")
-            roomName = createRoomContainer.text_input("Room Name")
-            maxUsers = createRoomContainer.number_input("Max Users", min_value=2, max_value=10, value=2)
-            roomPassword = createRoomContainer.number_input("Room Password (6 digits max)", min_value=0, max_value=999999)
-            scrambleSize = createRoomContainer.selectbox("Scramble Size", ["15", "20", "25", "30"], key="scrambleSizeOption")
-            btnCreate, btnCancel = createRoomContainer.columns(2)
-            def createRoom():
-                roomManager.createRoom(roomName, st.session_state.username, roomPassword, maxUsers, getScramble(int(scrambleSize)))
-                st.success("Created room " + roomName)
-                run = False
-                initRoomPage()
-            btnCreate.button("Create", on_click=createRoom)
-            btnState = btnCancel.button("Cancel")
-            while run:
-                if btnState:
-                    run = False
-                sleep(0.1)
             
 
 
@@ -83,12 +63,24 @@ try:
             pass
 
 
-        titleCol, refreshCol, createCol = st.columns(3)
+        titleCol, refreshCol = st.columns(2)
         titleCol.subheader("Room List")
         refreshCol.button("Refresh", on_click=refresh)
-        createCol.button("Create Room", on_click=createRoom)
 
         mainContainer = st.empty()
+
+        createRoomContainer = mainContainer.expander()
+        createRoomContainer.subheader("Create Room")
+        roomName = createRoomContainer.text_input("Room Name")
+        maxUsers = createRoomContainer.number_input("Max Users", min_value=2, max_value=10, value=2)
+        roomPassword = createRoomContainer.number_input("Room Password (6 digits max)", min_value=0, max_value=999999)
+        scrambleSize = createRoomContainer.selectbox("Scramble Size", ["15", "20", "25", "30"], key="scrambleSizeOption")
+        btnCreate, btnCancel = createRoomContainer.columns(2)
+        def createRoom():
+            roomManager.createRoom(roomName, st.session_state.username, roomPassword, maxUsers, getScramble(int(scrambleSize)))
+            createRoomContainer.success("Created room " + roomName)
+            initRoomPage()
+        btnCreate.button("Create", on_click=createRoom)
 
         refresh() # refresh room list
 
