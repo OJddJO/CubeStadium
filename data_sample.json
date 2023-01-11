@@ -9,9 +9,11 @@
 }
 
 {
-    "room": "room name",
+    "key": "room name",
     "admin": "admin name",
+    "password": 021345,
     "nb_users": 1,
+    "max_users": 2,
     "users": [
         {
             "username": "username",
@@ -22,6 +24,7 @@
             "time": [],
         }
     ],
+    "status": "waiting",
     "scramble": "scramble",
     "winner": "username"
 }
