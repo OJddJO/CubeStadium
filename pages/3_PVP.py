@@ -47,7 +47,7 @@ try:
             if btnJoin.button("Join"):
                 if inputPassword == password:
                     room = roomManager.getRoom(name)
-                    if room["data"]["currentUsers"] < room["data"]["maxUsers"]:
+                    if room["data"]["userNb"] < room["data"]["maxUsers"]:
                         roomManager.joinRoom(name)
                         joinRoomContainer.success("Joined room " + name)
                         initRoomPage()
