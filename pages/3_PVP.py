@@ -46,9 +46,9 @@ try:
             btnJoin, btnCancel = joinRoomContainer.columns(2)
             if btnJoin.button("Join"):
                 if inputPassword == password:
-                    room = roomManager.getRoom(name, st.session_state.username)
+                    room = roomManager.getRoom(name)
                     if room["data"]["userNb"] < room["data"]["maxUsers"]:
-                        roomManager.joinRoom(name)
+                        roomManager.joinRoom(name, st.session_state.username)
                         joinRoomContainer.success("Joined room " + name)
                         initRoomPage()
                         run = False
