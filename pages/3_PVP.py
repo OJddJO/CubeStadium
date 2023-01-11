@@ -81,6 +81,8 @@ try:
         refreshCol.button("Refresh", on_click=refresh)
         createCol.button("Create Room", on_click=createRoom)
 
+        refresh() # refresh room list
+
         mainContainer = st.empty()
 
             
