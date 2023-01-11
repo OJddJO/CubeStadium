@@ -23,11 +23,12 @@ try:
             roomPassword = createRoomContainer.number_input("Room Password (6 digits max)", min_value=0, max_value=999999)
             scrambleSize = createRoomContainer.selectbox("Scramble Size", ["15", "20", "25", "30"], key="scrambleSizeOption")
             btnCreate, btnCancel = createRoomContainer.columns(2)
-            if btnCreate.button("Create"):
+            def createRoom():
                 roomManager.createRoom(roomName, st.session_state.username, roomPassword, maxUsers, getScramble(int(scrambleSize)))
                 st.success("Created room " + roomName)
                 run = False
                 initRoomPage()
+            btnCreate.button("Create", on_click=createRoom)
             btnState = btnCancel.button("Cancel")
             while run:
                 if btnState:
