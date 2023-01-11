@@ -69,18 +69,17 @@ try:
 
         mainContainer = st.empty()
 
-        createRoomContainer = mainContainer.expander("Create Room")
+        createRoomContainer = st.expander("Create Room")
         createRoomContainer.subheader("Create Room")
         roomName = createRoomContainer.text_input("Room Name")
         maxUsers = createRoomContainer.number_input("Max Users", min_value=2, max_value=10, value=2)
         roomPassword = createRoomContainer.number_input("Room Password (6 digits max)", min_value=0, max_value=999999)
         scrambleSize = createRoomContainer.selectbox("Scramble Size", ["15", "20", "25", "30"], key="scrambleSizeOption")
-        btnCreate, btnCancel = createRoomContainer.columns(2)
         def createRoom():
             roomManager.createRoom(roomName, st.session_state.username, roomPassword, maxUsers, getScramble(int(scrambleSize)))
             createRoomContainer.success("Created room " + roomName)
             initRoomPage()
-        btnCreate.button("Create", on_click=createRoom)
+        createRoomContainer.button("Create", on_click=createRoom)
 
         refresh() # refresh room list
 
