@@ -44,10 +44,9 @@ try:
             
             btnJoin, btnCancel = joinRoomContainer.columns(2)
             btnPressed = btnJoin.button("Join")
-            cancel = btnCancel.button("Cancel")
             run = True
             while run:
-                if btnPressed == False:
+                if btnPressed:
                     if inputPassword == password:
                         room = roomManager.getRoom(name)
                         if room["data"]["userNb"] < room["data"]["maxUsers"]:
@@ -59,8 +58,7 @@ try:
                             joinRoomContainer.error("Room is full")
                     else:
                         joinRoomContainer.error("Wrong password")
-                if cancel:
-                    run = False
+                        run = False
 
 
         def initRoomPage():
