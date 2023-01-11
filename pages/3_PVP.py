@@ -26,8 +26,13 @@ try:
             if btnCreate.button("Create"):
                 roomManager.createRoom(roomName, st.session_state.username, roomPassword, maxUsers, getScramble(int(scrambleSize)))
                 st.success("Created room " + roomName)
+                run = False
                 initRoomPage()
             btnState = btnCancel.button("Cancel")
+            while run:
+                if btnState:
+                    run = False
+                sleep(0.1)
             
 
 
@@ -85,7 +90,6 @@ try:
         mainContainer = st.empty()
 
         refresh() # refresh room list
-            
 
 
         st.session_state.authenticator.logout("Logout", "sidebar")
