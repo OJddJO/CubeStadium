@@ -34,8 +34,8 @@ try:
                 tmp.caption("Max Users: " + str(roomMaxUsers[roomNames.index(name)]))
                 tmp.caption("Current Users: " + str(roomCurrentUsers[roomNames.index(name)]))
                 tmp.caption("Status: " + roomStatus[roomNames.index(name)])
-                if tmp.button("Join"):
-                    joinRoom(name, roomPassword[roomNames.index(name)], key=f"btnJoin{name}")
+                if tmp.button("Join", key=f"btnJoin{name}"):
+                    joinRoom(name, roomPassword[roomNames.index(name)])
 
 
         def joinRoom(name, password):
