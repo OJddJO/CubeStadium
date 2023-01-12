@@ -144,3 +144,5 @@ class Cube():
         for i in range(2):
             self.cube[5][0][0], self.cube[5][0][1], self.cube[5][0][2], self.cube[5][1][2], self.cube[5][2][2], self.cube[5][2][1], self.cube[5][2][0], self.cube[5][1][0] = self.cube[5][0][1], self.cube[5][0][2], self.cube[5][1][2], self.cube[5][2][2], self.cube[5][2][1], self.cube[5][2][0], self.cube[5][1][0], self.cube[5][0][0]
 
+
+print(Cube("R U R' U'").getMatrix())
