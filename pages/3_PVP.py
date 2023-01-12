@@ -19,7 +19,7 @@ try:
 
         def refresh():
             get_rooms = roomManager.fetchAllRooms()
-            roomListContainer = mainContainer.container()
+            roomListContainer = st.session_state.mainContainer.container()
             get_rooms = [room for room in get_rooms if room["data"]["status"] == "waiting"]
             roomNames = [name["key"] for name in get_rooms]
             roomAdmin = [admin["data"]["admin"] for admin in get_rooms]
@@ -39,7 +39,7 @@ try:
 
 
         def joinRoom(name, password):
-            joinRoomContainer = mainContainer.container()
+            joinRoomContainer = st.session_state.mainContainer.container()
             joinRoomContainer.subheader("Join Room")
             joinRoomContainer.subheader(name)
             inputPassword = joinRoomContainer.number_input("Room Password", min_value=0, max_value=999999)
@@ -78,7 +78,7 @@ try:
         titleCol.subheader("Room List")
         refreshCol.button("Refresh", on_click=refresh)
 
-        mainContainer = st.empty()
+        st.session_state.mainContainer = st.empty()
 
         refresh() # refresh room list
 
