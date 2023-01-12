@@ -68,7 +68,7 @@ try:
         #join room
         joinRoomContainer = st.expander("Join Room")
         roomName = joinRoomContainer.text_input("Room Name", key="joinRoomName")
-        roomPassword = joinRoomContainer.number_input("Room Password (6 digits max)", min_value=0, max_value=999999, key="joinRoomPassword")
+        roomPassword = joinRoomContainer.number_input("Room Password", min_value=0, max_value=999999, key="joinRoomPassword")
         joinRoomContainer.button("Join", on_click=joinRoom, args=(roomName, roomPassword))
 
         #room list
