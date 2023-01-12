@@ -5,8 +5,7 @@ from PIL import Image
 
 
 title = "Cube Stadium"
-image = Image.open("icon.png")
-icon = st.image(image)
+icon = Image.open("icon.png")
 st.set_page_config(page_title=title, page_icon=icon)
 st.title(title)
 st.info("Still in development ... 🛠️")

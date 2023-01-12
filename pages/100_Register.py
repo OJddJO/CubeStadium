@@ -2,8 +2,7 @@ import streamlit as st
 import _auth
 from PIL import Image
 
-image = Image.open("icon.png")
-icon = st.image(image)
+icon = Image.open("icon.png")
 title = "Register"
 st.set_page_config(page_title=title, page_icon=icon)
 st.title(title)

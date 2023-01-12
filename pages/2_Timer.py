@@ -5,8 +5,7 @@ from time import sleep, time
 from PIL import Image
 
 title = "Timer"
-image = Image.open("icon.png")
-icon = st.image(image)
+icon = Image.open("icon.png")
 st.set_page_config(page_title=title, page_icon=icon)
 st.title(title)
 st.sidebar.markdown("**Made with ❤️ by** [***OJddJO***](https://github.com/OJddJO/)")
