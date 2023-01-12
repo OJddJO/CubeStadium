@@ -1,10 +1,13 @@
 import streamlit as st
 import streamlit_authenticator as sa
 import _auth
+from PIL import Image
 
 
 title = "Cube Stadium"
-st.set_page_config(page_title=title, page_icon="👋")
+image = Image.open("icon.png")
+icon = st.image(image)
+st.set_page_config(page_title=title, page_icon=icon)
 st.title(title)
 st.info("Still in development ... 🛠️")
 st.sidebar.markdown("**Made with ❤️ by** [***OJddJO***](https://github.com/OJddJO/)")

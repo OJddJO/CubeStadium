@@ -1,6 +1,9 @@
 import streamlit as st
+from PIL import Image
 
-st.set_page_config(page_title="Ressources", page_icon="📚")
+image = Image.open("icon.png")
+icon = st.image(image)
+st.set_page_config(page_title="Ressources", page_icon=icon)
 st.title("Ressources")
 st.sidebar.markdown("**Made with ❤️ by** [***OJddJO***](https://github.com/OJddJO/)")
 

@@ -1,8 +1,11 @@
 import streamlit as st
 import _auth
+from PIL import Image
 
+image = Image.open("icon.png")
+icon = st.image(image)
 title = "Register"
-st.set_page_config(page_title=title, page_icon="🗒️")
+st.set_page_config(page_title=title, page_icon=icon)
 st.title(title)
 st.sidebar.markdown("**Made with ❤️ by** [***OJddJO***](https://github.com/OJddJO/)")
 

@@ -3,9 +3,12 @@ import streamlit.components.v1 as components
 from time import sleep, time
 from getScrambles import getScramble
 import roomManager
+from PIL import Image
 
 title = "PVP"
-st.set_page_config(page_title=title, page_icon="✊")
+image = Image.open("icon.png")
+icon = st.image(image)
+st.set_page_config(page_title=title, page_icon=icon)
 st.title(title)
 st.header("Coming soon !")
 st.sidebar.markdown("**Made with ❤️ by** [***OJddJO***](https://github.com/OJddJO/)")
