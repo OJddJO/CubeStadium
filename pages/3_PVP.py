@@ -9,6 +9,7 @@ st.set_page_config(page_title=title, page_icon="✊")
 st.title(title)
 st.header("Coming soon !")
 st.sidebar.markdown("**Made with ❤️ by** [***OJddJO***](https://github.com/OJddJO/)")
+
 try:
     if st.session_state.authentication_status == None or st.session_state.authentication_status == False:
         st.error("Please login to access this page")
@@ -43,7 +44,7 @@ try:
             inputPassword = joinRoomContainer.number_input("Room Password", min_value=0, max_value=999999)
             
             btnJoin, btnCancel = joinRoomContainer.columns(2)
-            btnPressed = btnJoin.button("Join")
+            btnPressed = btnJoin.button("Join", key="btnJoin")
             run = True
             while run:
                 if btnPressed:
