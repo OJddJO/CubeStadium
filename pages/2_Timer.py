@@ -1,6 +1,6 @@
 import streamlit as st
 import streamlit.components.v1 as components
-from getScrambles import getScramble
+from extension.getScrambles import getScramble
 from time import sleep, time
 from PIL import Image
 

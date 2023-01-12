@@ -1,6 +1,6 @@
 import streamlit as st
 import streamlit_authenticator as sa
-import _auth
+import extension._auth
 from PIL import Image
 
 
@@ -12,7 +12,7 @@ st.info("Still in development ... 🛠️")
 st.sidebar.markdown("**Made with ❤️ by** [***OJddJO***](https://github.com/OJddJO/)")
 
 # authentication
-get_users = _auth.fetchAllUsers()
+get_users = extension._auth.fetchAllUsers()
 usernames = [user["key"] for user in get_users]
 names = [user["name"] for user in get_users]
 hashedPasswords = [user["password"] for user in get_users]

@@ -1,5 +1,5 @@
 import streamlit as st
-import _auth
+import extension._auth
 from PIL import Image
 
 icon = Image.open("icon.png")
@@ -16,7 +16,7 @@ def regPage():
     password = regContainer.text_input("Password", type="password")
 
     # get all usernames to test if it already exists
-    users = _auth.fetchAllUsers()
+    users = extension._auth.fetchAllUsers()
     usernames = [user["key"] for user in users]
 
     if regContainer.button("Register"):
@@ -27,7 +27,7 @@ def regPage():
         else:
             st.success("Registered !")
             st.info("You can now login at the home page")
-            _auth.insertUser(name, username, password)
+            extension._auth.insertUser(name, username, password)
 
 
 try:

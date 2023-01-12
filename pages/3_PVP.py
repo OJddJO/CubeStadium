@@ -1,8 +1,8 @@
 import streamlit as st
 import streamlit.components.v1 as components
 from time import sleep, time
-from getScrambles import getScramble
-import roomManager
+from extension.getScrambles import getScramble
+import extension.roomManager
 from PIL import Image
 
 title = "PVP"
@@ -20,7 +20,7 @@ try:
         #main
 
         def refresh():
-            get_rooms = roomManager.fetchAllRooms()
+            get_rooms = extension.roomManager.fetchAllRooms()
             roomListContainer = mainContainer.container()
             get_rooms = [room for room in get_rooms if room["data"]["status"] == "waiting"]
             roomNames = [name["key"] for name in get_rooms]
@@ -39,11 +39,11 @@ try:
 
 
         def joinRoom(name, inputPassword):
-            password = roomManager.getRoom(name)["data"]["password"]
+            password = extension.roomManager.getRoom(name)["data"]["password"]
             if inputPassword == password:
-                room = roomManager.getRoom(name)
+                room = extension.roomManager.getRoom(name)
                 if room["data"]["userNb"] < room["data"]["maxUsers"]:
-                    roomManager.joinRoom(name, st.session_state.username)
+                    extension.roomManager.joinRoom(name, st.session_state.username)
                     joinRoomContainer.success("Joined room " + name)
                     initRoomPage()
                 else:
@@ -62,7 +62,7 @@ try:
         createRoomPassword = createRoomContainer.number_input("Room Password (6 digits max)", min_value=0, max_value=999999)
         scrambleSize = createRoomContainer.selectbox("Scramble Size", ["15", "20", "25", "30"], key="scrambleSizeOption")
         def createRoom(roomName, username, roomPassword, maxUsers, scrambleSize):
-            roomManager.createRoom(roomName, username, roomPassword, maxUsers, getScramble(int(scrambleSize)))
+            extension.roomManager.createRoom(roomName, username, roomPassword, maxUsers, getScramble(int(scrambleSize)))
             createRoomContainer.success("Created room " + roomName)
             initRoomPage()
         createRoomContainer.button("Create", on_click=createRoom, args=(createRoomName, st.session_state.username, createRoomPassword, maxUsers, scrambleSize))
