@@ -20,6 +20,7 @@ def createRoom(roomName, user, password, maxUsers, scramble):
         "scramble": scramble,
         "winner": None
     }
+    print(roomData)
     return db.put({"key": roomName, "data": roomData})
 
 def fetchAllRooms():
