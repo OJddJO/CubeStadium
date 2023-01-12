@@ -1,6 +1,6 @@
 class Cube():
     #cube 3x3x3 model
-    def __init__(self, scramble):
+    def __init__(self, scramble:str):
         self.cube = [[[0 for i in range(3)] for j in range(3)] for k in range(6)]
         #white = 0, yellow = 1, red = 2, orange = 3, green = 4, blue = 5
         self.cube[0] = [[0 for i in range(3)] for j in range(3)] #white UP
@@ -10,7 +10,55 @@ class Cube():
         self.cube[4] = [[2 for i in range(3)] for j in range(3)] #red RIGHT
         self.cube[5] = [[5 for i in range(3)] for j in range(3)] #blue BACK
         self.scramble = scramble
+
+
+    def getMatrix(self):
+        for move in self.scramble.split(" "):
+            if move == "U":
+                self.rotateU()
+            elif move == "U'":
+                self.rotateUp()
+            elif move == "D":
+                self.rotateD()
+            elif move == "D'":
+                self.rotateDp()
+            elif move == "L":
+                self.rotateL()
+            elif move == "L'":
+                self.rotateLp()
+            elif move == "R":
+                self.rotateR()
+            elif move == "R'":
+                self.rotateRp()
+            elif move == "F":
+                self.rotateF()
+            elif move == "F'":
+                self.rotateFp()
+            elif move == "B":
+                self.rotateB()
+            elif move == "B'":
+                self.rotateBp()
+            elif move == "U2":
+                self.rotateU()
+                self.rotateU()
+            elif move == "D2":
+                self.rotateD()
+                self.rotateD()
+            elif move == "L2":
+                self.rotateL()
+                self.rotateL()
+            elif move == "R2":
+                self.rotateR()
+                self.rotateR()
+            elif move == "F2":
+                self.rotateF()
+                self.rotateF()
+            elif move == "B2":
+                self.rotateB()
+                self.rotateB()
+        return self.cube
     
+    #rotation functions
     #self.cube[face][row][column]
     def rotateL(self):
         for i in range(3):
