@@ -1,7 +1,7 @@
 import streamlit as st
 
-st.title("Ressources")
 st.set_page_config(page_title="Ressources", page_icon="📚")
+st.title("Ressources")
 st.sidebar.markdown("**Made with ❤️ by** [***OJddJO***](https://github.com/OJddJO/)")
 
 algo = st.expander("Algorithmes")
