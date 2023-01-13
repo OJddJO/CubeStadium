@@ -34,7 +34,6 @@ class Cube():
 
     def getMatrix(self):
         for move in self.scramble.split(" "):
-            print(self.cube)
             self.moves[move]()
         return self.cube
     
@@ -98,28 +97,28 @@ class Cube():
 
     def rotateF(self):
         for i in range(3):
-            self.cube[0][2][2-i], self.cube[3][i][2], self.cube[2][0][2-i], self.cube[4][i][0] = self.cube[3][i][2], self.cube[2][0][i], self.cube[4][i][0], self.cube[0][2][i]
+            self.cube[0][2][i], self.cube[3][2-i][2], self.cube[2][0][2-i], self.cube[4][i][0] = self.cube[3][2-i][2], self.cube[2][0][2-i], self.cube[4][i][0], self.cube[0][2][i]
         #rotation of FRONT face 2 times clockwise
         for i in range(2):
             self.cube[1][0][0], self.cube[1][0][1], self.cube[1][0][2], self.cube[1][1][2], self.cube[1][2][2], self.cube[1][2][1], self.cube[1][2][0], self.cube[1][1][0] = self.cube[1][1][0], self.cube[1][0][0], self.cube[1][0][1], self.cube[1][0][2], self.cube[1][1][2], self.cube[1][2][2], self.cube[1][2][1], self.cube[1][2][0]
     
     def rotateFp(self):
         for i in range(3):
-            self.cube[0][2][i], self.cube[3][i][2], self.cube[2][0][i], self.cube[4][i][0] = self.cube[4][i][0], self.cube[0][2][2-i], self.cube[3][i][2], self.cube[2][0][2-i]
+            self.cube[0][2][i], self.cube[3][2-i][2], self.cube[2][0][2-i], self.cube[4][i][0] = self.cube[4][i][0], self.cube[0][2][i], self.cube[3][2-i][2], self.cube[2][0][2-i]
         #rotation of FRONT face 2 times counter-clockwise
         for i in range(2):
             self.cube[1][0][0], self.cube[1][0][1], self.cube[1][0][2], self.cube[1][1][2], self.cube[1][2][2], self.cube[1][2][1], self.cube[1][2][0], self.cube[1][1][0] = self.cube[1][0][1], self.cube[1][0][2], self.cube[1][1][2], self.cube[1][2][2], self.cube[1][2][1], self.cube[1][2][0], self.cube[1][1][0], self.cube[1][0][0]
 
     def rotateB(self):
         for i in range(3):
-            self.cube[0][0][2-i], self.cube[4][i][2], self.cube[2][2][2-i], self.cube[3][i][0] = self.cube[4][i][2], self.cube[2][2][i], self.cube[3][i][0], self.cube[0][0][i]
+            self.cube[0][0][i], self.cube[4][i][2], self.cube[2][2][2-i], self.cube[3][2-i][0] = self.cube[4][i][2], self.cube[2][2][2-i], self.cube[3][2-i][0], self.cube[0][0][i]
         #rotation of BACK face 2 times clockwise
         for i in range(2):
             self.cube[5][0][0], self.cube[5][0][1], self.cube[5][0][2], self.cube[5][1][2], self.cube[5][2][2], self.cube[5][2][1], self.cube[5][2][0], self.cube[5][1][0] = self.cube[5][1][0], self.cube[5][0][0], self.cube[5][0][1], self.cube[5][0][2], self.cube[5][1][2], self.cube[5][2][2], self.cube[5][2][1], self.cube[5][2][0]
     
     def rotateBp(self):
         for i in range(3):
-            self.cube[0][0][2-i], self.cube[4][i][2], self.cube[2][2][2-i], self.cube[3][i][0] = self.cube[3][i][0], self.cube[0][0][i], self.cube[4][i][2], self.cube[2][2][i]
+            self.cube[0][0][i], self.cube[4][i][2], self.cube[2][2][2-i], self.cube[3][2-i][0] = self.cube[3][2-i][0], self.cube[0][0][i], self.cube[4][i][2], self.cube[2][2][2-i]
         #rotation of BACK face 2 times counter-clockwise
         for i in range(2):
             self.cube[5][0][0], self.cube[5][0][1], self.cube[5][0][2], self.cube[5][1][2], self.cube[5][2][2], self.cube[5][2][1], self.cube[5][2][0], self.cube[5][1][0] = self.cube[5][0][1], self.cube[5][0][2], self.cube[5][1][2], self.cube[5][2][2], self.cube[5][2][1], self.cube[5][2][0], self.cube[5][1][0], self.cube[5][0][0]
@@ -147,5 +146,3 @@ class Cube():
     def rotateB2(self):
         self.rotateB()
         self.rotateB()
-
-print(Cube("D F D' F'").getMatrix())
