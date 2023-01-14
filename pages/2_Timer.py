@@ -135,7 +135,7 @@ try:
                 "list_ao5": st.session_state.userDatas[st.session_state.userIndex]["list_ao5"],
                 "list_ao12": st.session_state.userDatas[st.session_state.userIndex]["list_ao12"],
             }
-            extension.userData.updateData(st.session_state.username, data)
+            extension.userData.updateData(st.session_state.username, {"data": data})
 
 
             st.success("Time registered !")
