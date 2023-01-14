@@ -18,17 +18,18 @@ try:
 
     if st.session_state.authentication_status == True:
         #main
-        scrambleExpander = st.expander("Scramble Options")
+        timerPage, dataPage = st.tabs(2)
+        scrambleExpander = timerPage.expander("Scramble Options")
         scrambleSizeOption = scrambleExpander.selectbox("Scramble size", ["15", "20", "25", "30"], key="scrambleSizeOption")
 
-        scrambleContainer = st.empty()
+        scrambleContainer = timerPage.empty()
 
         if scrambleExpander.button("Re-Scramble"):
             st.session_state.scramble = getScramble(int(scrambleSizeOption))
             scrambleContainer.subheader(st.session_state.scramble)
 
         # timer
-        timerContainer = st.empty()
+        timerContainer = timerPage.empty()
         try:
             scrambleContainer.subheader(st.session_state.scramble)
             timerContainer.title("{:.2f}".format(st.session_state.timer))
@@ -100,7 +101,6 @@ try:
                 st.session_state.userDatas[st.session_state.userIndex]["pb"] = st.session_state.timer
             try:
                 tmp_ao5 = times[-5:]
-                st.info(tmp_ao5)
                 tmp_ao5.append(st.session_state.timer)
                 tmp_ao5.remove(min(tmp_ao5))
                 tmp_ao5.remove(max(tmp_ao5))
@@ -145,10 +145,10 @@ try:
             extension.userData.updateData(st.session_state.username, {"data": data})
 
 
-            st.success("Time registered !")
+            timerPage.success("Time registered !")
 
 
-        startStop = st.empty()
+        startStop = timerPage.empty()
         startStop.button("Start", on_click=timerFunc)
 
         #spacebar trigger button
@@ -173,9 +173,9 @@ try:
 
         cube = Cube()
         cubeModel = cube.drawCube(st.session_state.scramble)
-        st.image(cubeModel)
+        timerPage.image(cubeModel)
 
-        st.info("You can use the spacebar to start/stop the timer")
+        timerPage.info("You can use the spacebar to start/stop the timer")
 
 
         st.session_state.authenticator.logout("Logout", "sidebar")
