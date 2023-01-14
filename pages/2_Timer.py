@@ -104,7 +104,7 @@ try:
                 tmp_ao5.append(st.session_state.timer)
                 tmp_ao5.remove(min(tmp_ao5))
                 tmp_ao5.remove(max(tmp_ao5))
-                tmp_ao5 = sum(tmp_ao5)/len(tmp_ao5)
+                tmp_ao5 = round(sum(tmp_ao5)/len(tmp_ao5), 2)
                 list_ao5.append(tmp_ao5)
                 st.session_state.userDatas[st.session_state.userIndex]["list_ao5"] = list_ao5
                 try:
@@ -121,7 +121,7 @@ try:
                 tmp_ao12.append(st.session_state.timer)
                 tmp_ao12.remove(min(tmp_ao12))
                 tmp_ao12.remove(max(tmp_ao12))
-                tmp_ao12 = sum(tmp_ao12)/len(tmp_ao12)
+                tmp_ao12 = round(sum(tmp_ao12)/len(tmp_ao12), 2)
                 list_ao12.append(tmp_ao12)
                 st.session_state.userDatas[st.session_state.userIndex]["list_ao12"] = list_ao12
                 try:
