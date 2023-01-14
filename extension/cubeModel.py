@@ -37,10 +37,8 @@ class Cube():
 
     def drawCube(self):
         #draw cube pattern
-        cubeImage = Image.new('RGB', (1200, 900), (255, 255, 255))
+        cubeImage = Image.new('RGBA', (1200, 900), (0, 0, 0, 255))
         draw = ImageDraw.Draw(cubeImage)
-        # fill the image with gray
-        draw.rectangle([0, 0, 1200, 900], fill=(50, 50, 50))
         
         #get colors from cube model
         colors = {
