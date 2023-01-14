@@ -47,22 +47,9 @@ if authenticationStatus == True:
     list_ao5 = st.session_state.userDatas[st.session_state.userIndex]["list_ao5"]
     list_ao12 = st.session_state.userDatas[st.session_state.userIndex]["list_ao12"]
 
-    try:
-        delta_pb = pb - times[-1]
-    except:
-        delta_pb = None
-    try:
-        delta_ao5 = ao5 - list_ao5[-1]
-    except:
-        delta_ao5 = None
-    try:
-        delta_ao12 = ao12 - list_ao12[-1]
-    except:
-        delta_ao12 = None
-
     st.subheader("👋 Welcome to Cube Stadium !")
     col1, col2, col3, = st.columns(3)
-    col1.metric("Personnal Best:", pb, delta_pb, delta_color="inverse")
-    col2.metric("Average of 5:", ao5, delta_ao5, delta_color="inverse")
-    col3.metric("Average of 12:", ao5, delta_ao12, delta_color="inverse")
+    col1.metric("Personnal Best:", pb)
+    col2.metric("Average of 5:", ao5)
+    col3.metric("Average of 12:", ao12)
 
