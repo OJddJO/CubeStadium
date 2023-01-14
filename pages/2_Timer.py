@@ -37,6 +37,10 @@ try:
             scrambleContainer.subheader(st.session_state.scramble)
             timerContainer.title("{:.2f}".format(st.session_state.timer))
 
+        cube = Cube(st.session_state.scramble)
+        cubeModel = cube.drawCube()
+        st.image(cubeModel)
+
 
         def timerFunc():
             # init timer with scramble and reset timer
@@ -102,10 +106,6 @@ try:
             height=0,
             width=0,
         )
-
-        cube = Cube(st.session_state.scramble)
-        cubeModel = cube.drawCube()
-        st.image(cubeModel)
 
         st.info("You can use the spacebar to start/stop the timer")
 
