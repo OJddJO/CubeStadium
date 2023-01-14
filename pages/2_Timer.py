@@ -101,7 +101,7 @@ try:
             if pb == None or st.session_state.timer < pb:
                 st.session_state.userDatas[st.session_state.userIndex]["pb"] = st.session_state.timer
             try:
-                tmp_ao5 = times[-5:].copy()
+                tmp_ao5 = times[-5:]
                 tmp_ao5.append(st.session_state.timer)
                 tmp_ao5.remove(min(tmp_ao5))
                 tmp_ao5.remove(max(tmp_ao5))
@@ -116,7 +116,7 @@ try:
 
             # update ao12
             try:
-                tmp_ao12 = times[-12:].copy()
+                tmp_ao12 = times[-12:]
                 tmp_ao12.append(st.session_state.timer)
                 tmp_ao12.remove(min(tmp_ao12))
                 tmp_ao12.remove(max(tmp_ao12))
