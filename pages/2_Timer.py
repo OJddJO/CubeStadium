@@ -18,7 +18,7 @@ try:
 
     if st.session_state.authentication_status == True:
         #main
-        timerPage, dataPage = st.tabs(2)
+        timerPage, dataPage = st.tabs(["Timer", "Data"])
         scrambleExpander = timerPage.expander("Scramble Options")
         scrambleSizeOption = scrambleExpander.selectbox("Scramble size", ["15", "20", "25", "30"], key="scrambleSizeOption")
 
