@@ -82,8 +82,6 @@ try:
             #save time and scramble
             #retrieve user data
             pb = st.session_state.userDatas[st.session_state.userIndex]["pb"]
-            ao5 = st.session_state.userDatas[st.session_state.userIndex]["ao5"]
-            ao12 = st.session_state.userDatas[st.session_state.userIndex]["ao12"]
             scrambles = st.session_state.userDatas[st.session_state.userIndex]["scrambles"]
             times = st.session_state.userDatas[st.session_state.userIndex]["times"]
             list_ao5 = st.session_state.userDatas[st.session_state.userIndex]["list_ao5"]
@@ -100,7 +98,6 @@ try:
                 st.session_state.userDatas[st.session_state.userIndex]["pb"] = st.session_state.timer
             try:
                 tmp_ao5 = times[-5:]
-                st.info(tmp_ao5)
                 tmp_ao5.append(st.session_state.timer)
                 tmp_ao5.remove(min(tmp_ao5))
                 tmp_ao5.remove(max(tmp_ao5))
@@ -181,5 +178,5 @@ try:
         st.session_state.authenticator.logout("Logout", "sidebar")
 
 
-except Exception as e:
+except:
     st.error("Please go to home page first")
