@@ -98,20 +98,19 @@ try:
             # update ao5
             if pb == None or st.session_state.timer < pb:
                 st.session_state.userDatas[st.session_state.userIndex]["pb"] = st.session_state.timer
-            try:
-                tmp_ao5 = times[-5:]
-                st.info(tmp_ao5)
-                tmp_ao5.append(st.session_state.timer)
-                tmp_ao5.remove(min(tmp_ao5))
-                tmp_ao5.remove(max(tmp_ao5))
-                tmp_ao5 = sum(tmp_ao5)/len(tmp_ao5)
-                list_ao5.append(tmp_ao5)
-                st.session_state.userDatas[st.session_state.userIndex]["list_ao5"] = list_ao5
-                if st.session_state.userDatas[st.session_state.userIndex]["ao5"] == None or tmp_ao5 < st.session_state.userDatas[st.session_state.userIndex]["ao5"]:
-                    st.session_state.userDatas[st.session_state.userIndex]["ao5"] = tmp_ao5
-            except Exception as e:
-                st.session_state.userDatas[st.session_state.userIndex]["list_ao5"] = None
-                st.error(e)
+            """try:"""
+            tmp_ao5 = times[-5:]
+            st.info(tmp_ao5)
+            tmp_ao5.append(st.session_state.timer)
+            tmp_ao5.remove(min(tmp_ao5))
+            tmp_ao5.remove(max(tmp_ao5))
+            tmp_ao5 = sum(tmp_ao5)/len(tmp_ao5)
+            list_ao5.append(tmp_ao5)
+            st.session_state.userDatas[st.session_state.userIndex]["list_ao5"] = list_ao5
+            if st.session_state.userDatas[st.session_state.userIndex]["ao5"] == None or tmp_ao5 < st.session_state.userDatas[st.session_state.userIndex]["ao5"]:
+                st.session_state.userDatas[st.session_state.userIndex]["ao5"] = tmp_ao5
+            """except:
+                st.session_state.userDatas[st.session_state.userIndex]["list_ao5"] = None"""
 
             # update ao12
             try:
@@ -124,9 +123,8 @@ try:
                 st.session_state.userDatas[st.session_state.userIndex]["list_ao12"] = list_ao12
                 if st.session_state.userDatas[st.session_state.userIndex]["ao12"] == None or tmp_ao12 < st.session_state.userDatas[st.session_state.userIndex]["ao12"]:
                     st.session_state.userDatas[st.session_state.userIndex]["ao12"] = tmp_ao12
-            except Exception as e:
+            except:
                 st.session_state.userDatas[st.session_state.userIndex]["list_ao12"] = None
-                st.error(e)
 
             # save user data in db
             data = {
