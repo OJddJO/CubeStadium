@@ -196,5 +196,3 @@ class Cube():
     def rotateB2(self):
         self.rotateB()
         self.rotateB()
-
-Cube("U").drawCube().show()

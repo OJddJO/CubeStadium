@@ -105,7 +105,6 @@ try:
 
         cube = Cube(st.session_state.scramble)
         cubeModel = cube.drawCube()
-        st.info(cubeModel)
         st.image(cubeModel)
 
         st.info("You can use the spacebar to start/stop the timer")
