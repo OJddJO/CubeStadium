@@ -103,8 +103,8 @@ if st.session_state.authentication_status == True:
         width=0,
     )
 
-    st.session_state.cube = Cube(st.session_state.scramble)
-    cubeModel = st.session_state.cube.drawCube()
+    cube = Cube(st.session_state.scramble)
+    cubeModel = cube.drawCube()
     st.image(cubeModel)
 
     st.info("You can use the spacebar to start/stop the timer")
