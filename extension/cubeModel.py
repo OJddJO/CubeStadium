@@ -37,8 +37,8 @@ class Cube():
 
     def drawCube(self):
         #draw cube pattern
-        cubeImage = Image.new('RGBA', (1200, 900), (0, 0, 0, 255))
-        draw = ImageDraw.Draw(cubeImage)
+        cubeImage = Image.new('RGBA', (1200, 900), (50, 50, 50, 0))
+        draw = ImageDraw.Draw(cubeImage, 'RGBA')
         
         #get colors from cube model
         colors = {
@@ -196,3 +196,5 @@ class Cube():
     def rotateB2(self):
         self.rotateB()
         self.rotateB()
+
+Cube("U").drawCube().show()
