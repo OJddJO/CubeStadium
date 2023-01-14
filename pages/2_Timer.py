@@ -111,8 +111,9 @@ try:
                     st.session_state.userDatas[st.session_state.userIndex]["ao5"] = tmp_ao5
                 elif tmp_ao5 < st.session_state.userDatas[st.session_state.userIndex]["ao5"]:
                     st.session_state.userDatas[st.session_state.userIndex]["ao5"] = tmp_ao5
-            except:
+            except Exception as e:
                 st.session_state.userDatas[st.session_state.userIndex]["list_ao5"] = []
+                st.error(e)
 
             # update ao12
             try:
