@@ -149,7 +149,6 @@ try:
 
 
         startStop = timerPage.empty()
-        startStop.button("Start", on_click=timerFunc)
 
         #spacebar trigger button
         components.html(
@@ -176,6 +175,8 @@ try:
         timerPage.image(cubeModel)
 
         timerPage.info("You can use the spacebar to start/stop the timer")
+        
+        startStop.button("Start", on_click=timerFunc)
 
 
         st.session_state.authenticator.logout("Logout", "sidebar")
