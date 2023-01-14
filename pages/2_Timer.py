@@ -107,13 +107,13 @@ try:
                 tmp_ao5 = sum(tmp_ao5)/len(tmp_ao5)
                 list_ao5.append(tmp_ao5)
                 st.session_state.userDatas[st.session_state.userIndex]["list_ao5"] = list_ao5
-                if st.session_state.userDatas[st.session_state.userIndex]["ao5"] == [] :
+                try:
+                    if tmp_ao5 < st.session_state.userDatas[st.session_state.userIndex]["ao5"]:
+                        st.session_state.userDatas[st.session_state.userIndex]["ao5"] = tmp_ao5
+                except:
                     st.session_state.userDatas[st.session_state.userIndex]["ao5"] = tmp_ao5
-                elif tmp_ao5 < st.session_state.userDatas[st.session_state.userIndex]["ao5"]:
-                    st.session_state.userDatas[st.session_state.userIndex]["ao5"] = tmp_ao5
-            except Exception as e:
+            except:
                 st.session_state.userDatas[st.session_state.userIndex]["list_ao5"] = []
-                st.error(e)
 
             # update ao12
             try:
@@ -124,9 +124,10 @@ try:
                 tmp_ao12 = sum(tmp_ao12)/len(tmp_ao12)
                 list_ao12.append(tmp_ao12)
                 st.session_state.userDatas[st.session_state.userIndex]["list_ao12"] = list_ao12
-                if st.session_state.userDatas[st.session_state.userIndex]["ao12"] == []:
-                    st.session_state.userDatas[st.session_state.userIndex]["ao12"] = tmp_ao12
-                elif tmp_ao12 < st.session_state.userDatas[st.session_state.userIndex]["ao12"]:
+                try:
+                    if tmp_ao12 < st.session_state.userDatas[st.session_state.userIndex]["ao12"]:
+                        st.session_state.userDatas[st.session_state.userIndex]["ao12"] = tmp_ao12
+                except:
                     st.session_state.userDatas[st.session_state.userIndex]["ao12"] = tmp_ao12
             except:
                 st.session_state.userDatas[st.session_state.userIndex]["list_ao12"] = []
