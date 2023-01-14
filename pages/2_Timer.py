@@ -3,7 +3,7 @@ import streamlit.components.v1 as components
 from extension.getScrambles import getScramble
 from extension.cubeModel import Cube
 from time import sleep, time
-from PIL import Image
+from PIL import Image, ImageDraw
 
 title = "Timer"
 icon = Image.open("icon.png")
