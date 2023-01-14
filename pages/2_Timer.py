@@ -110,7 +110,8 @@ try:
                     st.session_state.userDatas[st.session_state.userIndex]["ao5"] = ao5
             except:
                 st.session_state.userDatas[st.session_state.userIndex]["list_ao5"] = None
-            
+                st.error(Exception)
+
             # update ao12
             try:
                 tmp_ao12 = times.copy()[-12:]
@@ -124,6 +125,7 @@ try:
                     st.session_state.userDatas[st.session_state.userIndex]["ao12"] = ao12
             except:
                 st.session_state.userDatas[st.session_state.userIndex]["list_ao12"] = None
+                st.error(Exception)
 
             # save user data in db
             data = {
