@@ -81,7 +81,7 @@ class Cube():
                 draw.rectangle([pos[0]+j*100, pos[1]+i*100, pos[0]+(j+1)*100, pos[1]+(i+1)*100], fill=colors[matrix[5][i][j]])
         return cubeImage
 
-    def getMatrix(self, scramble):
+    def getMatrix(self, scramble:str):
         for move in scramble.split(" "):
             self.moves[move]()
         return self.cube
