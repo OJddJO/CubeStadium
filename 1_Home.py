@@ -37,32 +37,32 @@ if authenticationStatus == True:
     #main
 
     #get user data
-    userIndex = usernames.index(username)
+    st.session_state.userIndex = usernames.index(username)
 
-    pb = userDatas[userIndex]["pb"]
-    ao5 = userDatas[userIndex]["ao5"]
-    ao12 = userDatas[userIndex]["ao12"]
-    scrambles = userDatas[userIndex]["scrambles"]
-    times = userDatas[userIndex]["times"]
-    list_ao5 = userDatas[userIndex]["list_ao5"]
-    list_ao12 = userDatas[userIndex]["list_ao12"]
+    st.session_state.pb = userDatas[st.session_state.userIndex]["pb"]
+    st.session_state.ao5 = userDatas[st.session_state.userIndex]["ao5"]
+    st.session_state.ao12 = userDatas[st.session_state.userIndex]["ao12"]
+    st.session_state.scrambles = userDatas[st.session_state.userIndex]["scrambles"]
+    st.session_state.times = userDatas[st.session_state.userIndex]["times"]
+    st.session_state.list_ao5 = userDatas[st.session_state.userIndex]["list_ao5"]
+    st.session_state.list_ao12 = userDatas[st.session_state.userIndex]["list_ao12"]
 
     try:
-        delta_pb = pb - times[-1]
+        delta_pb = st.session_state.pb - st.session_state.times[-1]
     except:
         delta_pb = None
     try:
-        delta_ao5 = ao5 - list_ao5[-1]
+        delta_ao5 = st.session_state.ao5 - st.session_state.list_ao5[-1]
     except:
         delta_ao5 = None
     try:
-        delta_ao12 = ao12 - list_ao12[-1]
+        delta_ao12 = st.session_state.ao12 - st.session_state.list_ao12[-1]
     except:
         delta_ao12 = None
 
     st.subheader("👋 Welcome to Cube Stadium !")
     col1, col2, col3, = st.columns(3)
-    col1.metric("Personnal Best:", pb, delta_pb, delta_color="inverse")
-    col2.metric("Average of 5:", ao5, delta_ao5, delta_color="inverse")
-    col3.metric("Average of 12:", ao5, delta_ao12, delta_color="inverse")
+    col1.metric("Personnal Best:", st.session_state.pb, delta_pb, delta_color="inverse")
+    col2.metric("Average of 5:", st.session_state.ao5, delta_ao5, delta_color="inverse")
+    col3.metric("Average of 12:", st.session_state.ao5, delta_ao12, delta_color="inverse")
 

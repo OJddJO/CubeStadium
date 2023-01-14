@@ -78,7 +78,12 @@ try:
         def stopTimer():
             st.session_state.scramble = getScramble(int(scrambleSizeOption))
             scrambleContainer.subheader(st.session_state.scramble)
+            #save time and scramble
+            tmp = st.session_state.timer
+            data = {}
+
             st.success("Time not registered !")
+
 
         startStop = st.empty()
         startStop.button("Start", on_click=timerFunc)
