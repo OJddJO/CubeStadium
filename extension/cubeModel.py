@@ -15,7 +15,7 @@ class Cube():
 
     def drawCube(self, scramble):
         #draw cube pattern
-        cubeImage = Image.new('RGBA', (200, 150), (50, 50, 50, 0))
+        cubeImage = Image.new('RGBA', (360, 270), (50, 50, 50, 0))
         draw = ImageDraw.Draw(cubeImage, 'RGBA')
         
         #get colors from cube model
@@ -30,35 +30,35 @@ class Cube():
         matrix = self.getMatrix(scramble)
         #draw cube pattern on image
         #draw UP face
-        pos = [50, 0]
+        pos = [90, 0]
         for i in range(3):
             for j in range(3):
-                draw.rectangle([pos[0]+j*50, pos[1]+i*50, pos[0]+(j+1)*50, pos[1]+(i+1)*50], fill=colors[matrix[0][i][j]])
+                draw.rectangle([pos[0]+j*30, pos[1]+i*30, pos[0]+(j+1)*30, pos[1]+(i+1)*30], fill=colors[matrix[0][i][j]])
         #draw FRONT face
-        pos = [50, 50]
+        pos = [90, 90]
         for i in range(3):
             for j in range(3):
-                draw.rectangle([pos[0]+j*50, pos[1]+i*50, pos[0]+(j+1)*50, pos[1]+(i+1)*50], fill=colors[matrix[1][i][j]])
+                draw.rectangle([pos[0]+j*30, pos[1]+i*30, pos[0]+(j+1)*30, pos[1]+(i+1)*30], fill=colors[matrix[1][i][j]])
         #draw DOWN face
-        pos = [50, 100]
+        pos = [90, 180]
         for i in range(3):
             for j in range(3):
-                draw.rectangle([pos[0]+j*50, pos[1]+i*50, pos[0]+(j+1)*50, pos[1]+(i+1)*50], fill=colors[matrix[2][i][j]])
+                draw.rectangle([pos[0]+j*30, pos[1]+i*30, pos[0]+(j+1)*30, pos[1]+(i+1)*30], fill=colors[matrix[2][i][j]])
         #draw LEFT face
-        pos = [0, 50]
+        pos = [0, 90]
         for i in range(3):
             for j in range(3):
-                draw.rectangle([pos[0]+j*50, pos[1]+i*50, pos[0]+(j+1)*50, pos[1]+(i+1)*50], fill=colors[matrix[3][i][j]])
+                draw.rectangle([pos[0]+j*30, pos[1]+i*30, pos[0]+(j+1)*30, pos[1]+(i+1)*30], fill=colors[matrix[3][i][j]])
         #draw RIGHT face
-        pos = [100, 50]
+        pos = [180, 90]
         for i in range(3):
             for j in range(3):
-                draw.rectangle([pos[0]+j*50, pos[1]+i*50, pos[0]+(j+1)*50, pos[1]+(i+1)*50], fill=colors[matrix[4][i][j]])
+                draw.rectangle([pos[0]+j*30, pos[1]+i*30, pos[0]+(j+1)*30, pos[1]+(i+1)*30], fill=colors[matrix[4][i][j]])
         #draw BACK face
-        pos = [150, 50]
+        pos = [270, 90]
         for i in range(3):
             for j in range(3):
-                draw.rectangle([pos[0]+j*50, pos[1]+i*50, pos[0]+(j+1)*50, pos[1]+(i+1)*50], fill=colors[matrix[5][i][j]])
+                draw.rectangle([pos[0]+j*30, pos[1]+i*30, pos[0]+(j+1)*30, pos[1]+(i+1)*30], fill=colors[matrix[5][i][j]])
         return cubeImage
 
     def getMatrix(self, scramble:str):
