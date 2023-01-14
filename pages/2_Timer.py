@@ -104,6 +104,8 @@ try:
         )
 
         cube = Cube(st.session_state.scramble)
+        st.info(cube.scramble)
+        st.info(cube.matrix)
         cubeModel = cube.drawCube()
         st.image(cubeModel)
 
