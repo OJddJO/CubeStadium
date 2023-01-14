@@ -89,8 +89,6 @@ try:
             list_ao5 = st.session_state.userDatas[st.session_state.userIndex]["list_ao5"]
             list_ao12 = st.session_state.userDatas[st.session_state.userIndex]["list_ao12"]
 
-            st.info(times)
-
             # update user data
             # add time and scramble
             scrambles.append(st.session_state.scramble)
@@ -102,6 +100,7 @@ try:
                 st.session_state.userDatas[st.session_state.userIndex]["pb"] = st.session_state.timer
             try:
                 tmp_ao5 = times[-5:]
+                st.info(tmp_ao5)
                 tmp_ao5.append(st.session_state.timer)
                 tmp_ao5.remove(min(tmp_ao5))
                 tmp_ao5.remove(max(tmp_ao5))
