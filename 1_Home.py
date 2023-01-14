@@ -38,6 +38,7 @@ if authenticationStatus == True:
 
     #get user data
     st.session_state.userIndex = usernames.index(st.session_state.username)
+    st.info(st.session_state.username)
 
     pb = st.session_state.userDatas[st.session_state.userIndex]["pb"]
     ao5 = st.session_state.userDatas[st.session_state.userIndex]["ao5"]
