@@ -108,9 +108,9 @@ try:
                 st.session_state.userDatas[st.session_state.userIndex]["list_ao5"] = list_ao5
                 if st.session_state.userDatas[st.session_state.userIndex]["ao5"] == None or ao5 < st.session_state.userDatas[st.session_state.userIndex]["ao5"]:
                     st.session_state.userDatas[st.session_state.userIndex]["ao5"] = ao5
-            except:
+            except Exception as e:
                 st.session_state.userDatas[st.session_state.userIndex]["list_ao5"] = None
-                st.error(Exception)
+                st.error(e)
 
             # update ao12
             try:
@@ -123,9 +123,9 @@ try:
                 st.session_state.userDatas[st.session_state.userIndex]["list_ao12"] = list_ao12
                 if st.session_state.userDatas[st.session_state.userIndex]["ao12"] == None or ao12 < st.session_state.userDatas[st.session_state.userIndex]["ao12"]:
                     st.session_state.userDatas[st.session_state.userIndex]["ao12"] = ao12
-            except:
+            except Exception as e:
                 st.session_state.userDatas[st.session_state.userIndex]["list_ao12"] = None
-                st.error(Exception)
+                st.error(e)
 
             # save user data in db
             data = {
