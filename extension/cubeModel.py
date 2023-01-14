@@ -11,26 +11,6 @@ class Cube():
         self.cube[3] = [[3 for i in range(3)] for j in range(3)] #orange LEFT
         self.cube[4] = [[2 for i in range(3)] for j in range(3)] #red RIGHT
         self.cube[5] = [[5 for i in range(3)] for j in range(3)] #blue BACK
-        self.moves = {
-            "U": self.rotateU,
-            "U'": self.rotateUp,
-            "D": self.rotateD,
-            "D'": self.rotateDp,
-            "L": self.rotateL,
-            "L'": self.rotateLp,
-            "R": self.rotateR,
-            "R'": self.rotateRp,
-            "F": self.rotateF,
-            "F'": self.rotateFp,
-            "B": self.rotateB,
-            "B'": self.rotateBp,
-            "U2": self.rotateU2,
-            "D2": self.rotateD2,
-            "L2": self.rotateL2,
-            "R2": self.rotateR2,
-            "F2": self.rotateF2,
-            "B2": self.rotateB2
-        }
 
 
     def drawCube(self, scramble):
@@ -83,7 +63,42 @@ class Cube():
 
     def getMatrix(self, scramble:str):
         for move in scramble.split(" "):
-            self.moves[move]()
+            if move == "U":
+                self.rotateU()
+            elif move == "U'":
+                self.rotateUp()
+            elif move == "U2":
+                self.rotateU2()
+            elif move == "D":
+                self.rotateD()
+            elif move == "D'":
+                self.rotateDp()
+            elif move == "D2":
+                self.rotateD2()
+            elif move == "F":
+                self.rotateF()
+            elif move == "F'":
+                self.rotateFp()
+            elif move == "F2":
+                self.rotateF2()
+            elif move == "B":
+                self.rotateB()
+            elif move == "B'":
+                self.rotateBp()
+            elif move == "B2":
+                self.rotateB2()
+            elif move == "L":
+                self.rotateL()
+            elif move == "L'":
+                self.rotateLp()
+            elif move == "L2":
+                self.rotateL2()
+            elif move == "R":
+                self.rotateR()
+            elif move == "R'":
+                self.rotateRp()
+            elif move == "R2":
+                self.rotateR2()
         return self.cube
     
     #rotation functions
