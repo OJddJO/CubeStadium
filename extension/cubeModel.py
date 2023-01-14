@@ -39,7 +39,7 @@ class Cube():
         cubeImage = Image.new('RGB', (1200, 900), (255, 255, 255))
         draw = ImageDraw.Draw(cubeImage)
         # fill the image with gray
-        draw.rectangle([0, 0, 1200, 900], fill=(100, 100, 100))
+        draw.rectangle([0, 0, 1200, 900], fill=(50, 50, 50))
         
         #get colors from cube model
         matrix = self.getMatrix()
