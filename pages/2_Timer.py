@@ -18,18 +18,17 @@ try:
 
     if st.session_state.authentication_status == True:
         #main
-        timerPage, dataPage = st.tabs(["Timer", "Data"])
-        scrambleExpander = timerPage.expander("Scramble Options")
+        scrambleExpander = st.expander("Scramble Options")
         scrambleSizeOption = scrambleExpander.selectbox("Scramble size", ["15", "20", "25", "30"], key="scrambleSizeOption")
 
-        scrambleContainer = timerPage.empty()
+        scrambleContainer = st.empty()
 
         if scrambleExpander.button("Re-Scramble"):
             st.session_state.scramble = getScramble(int(scrambleSizeOption))
             scrambleContainer.subheader(st.session_state.scramble)
 
         # timer
-        timerContainer = timerPage.empty()
+        timerContainer = st.empty()
         try:
             scrambleContainer.subheader(st.session_state.scramble)
             timerContainer.title("{:.2f}".format(st.session_state.timer))
@@ -101,6 +100,7 @@ try:
                 st.session_state.userDatas[st.session_state.userIndex]["pb"] = st.session_state.timer
             try:
                 tmp_ao5 = times[-5:]
+                st.info(tmp_ao5)
                 tmp_ao5.append(st.session_state.timer)
                 tmp_ao5.remove(min(tmp_ao5))
                 tmp_ao5.remove(max(tmp_ao5))
@@ -145,10 +145,11 @@ try:
             extension.userData.updateData(st.session_state.username, {"data": data})
 
 
-            timerPage.success("Time registered !")
+            st.success("Time registered !")
 
 
-        startStop = timerPage.empty()
+        startStop = st.empty()
+        startStop.button("Start", on_click=timerFunc)
 
         #spacebar trigger button
         components.html(
@@ -172,11 +173,9 @@ try:
 
         cube = Cube()
         cubeModel = cube.drawCube(st.session_state.scramble)
-        timerPage.image(cubeModel)
+        st.image(cubeModel)
 
-        timerPage.info("You can use the spacebar to start/stop the timer")
-        
-        startStop.button("Start", on_click=timerFunc)
+        st.info("You can use the spacebar to start/stop the timer")
 
 
         st.session_state.authenticator.logout("Logout", "sidebar")
@@ -184,4 +183,3 @@ try:
 
 except Exception as e:
     st.error("Please go to home page first")
-    st.error(e)
