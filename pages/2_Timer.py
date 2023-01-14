@@ -34,8 +34,9 @@ try:
         except:
             st.session_state.scramble = getScramble()
             st.session_state.timer = 0.00
-            scrambleContainer.subheader(st.session_state.scramble)
             timerContainer.title("{:.2f}".format(st.session_state.timer))
+        
+        scrambleContainer.subheader(st.session_state.scramble)
 
         cube = Cube(st.session_state.scramble)
         cubeModel = cube.drawCube()
