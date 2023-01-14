@@ -65,3 +65,4 @@ if authenticationStatus == True:
     col1.metric("Personnal Best:", pb, delta_pb, delta_color="inverse")
     col2.metric("Average of 5:", ao5, delta_ao5, delta_color="inverse")
     col3.metric("Average of 12:", ao5, delta_ao12, delta_color="inverse")
+
