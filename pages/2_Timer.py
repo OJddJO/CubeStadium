@@ -89,6 +89,8 @@ try:
             list_ao5 = st.session_state.userDatas[st.session_state.userIndex]["list_ao5"]
             list_ao12 = st.session_state.userDatas[st.session_state.userIndex]["list_ao12"]
 
+            st.info(times)
+
             # update user data
             # add time and scramble
             scrambles.append(st.session_state.scramble)
