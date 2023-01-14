@@ -1,3 +1,5 @@
+from PIL import Image, ImageDraw
+
 class Cube():
     #cube 3x3x3 model
     def __init__(self, scramble:str):
@@ -31,6 +33,32 @@ class Cube():
         }
         self.scramble = scramble
 
+
+    def drawCube(self):
+        #draw cube
+        cubeImage = Image.new("RGB", (300, 300), (255, 255, 255))
+        draw = ImageDraw.Draw(cubeImage)
+        #draw pattern lines
+        for i in range(1, 3):
+            draw.line((0, 100*i, 300, 100*i), fill=(0, 0, 0))
+            draw.line((100*i, 0, 100*i, 300), fill=(0, 0, 0))
+        
+        #get colors from cube model
+        matrix = self.getMatrix()
+        colors = {
+            0: (255, 255, 255),
+            1: (255, 255, 0),
+            2: (255, 0, 0),
+            3: (255, 165, 0),
+            4: (0, 255, 0),
+            5: (0, 0, 255)
+        }
+        #draw cube pattern on image
+        for i in range(6):
+            for j in range(3):
+                for k in range(3):
+                    draw.rectangle((100*k, 100*j, 100*k+100, 100*j+100), fill=colors[matrix[i][j][k]])
+        return cubeImage
 
     def getMatrix(self):
         for move in self.scramble.split(" "):
