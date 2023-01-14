@@ -103,7 +103,8 @@ try:
             width=0,
         )
 
-        cubeModel = Cube(st.session_state.scramble).drawCube()
+        cube = Cube(st.session_state.scramble)
+        cubeModel = cube.drawCube()
         st.image(cubeModel, use_column_width=True)
 
         st.info("You can use the spacebar to start/stop the timer")
