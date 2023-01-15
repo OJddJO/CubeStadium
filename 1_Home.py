@@ -16,11 +16,12 @@ get_users = extension._auth.fetchAllUsers()
 usernames = [user["key"] for user in get_users]
 names = [user["name"] for user in get_users]
 hashedPasswords = [user["password"] for user in get_users]
-st.session_state.userDatas = [user["data"] for user in get_users]
 
 st.session_state.authenticator = sa.Authenticate(names, usernames, hashedPasswords, "cubestadium", "secret")
 
 name, authenticationStatus, st.session_state.username = st.session_state.authenticator.login("Login", "main")
+
+st.session_state.userDatas = [user["data"] for user in get_users]
 
 if authenticationStatus == False:
     st.error("Username/password is incorrect")
