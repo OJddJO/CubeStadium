@@ -39,7 +39,7 @@ try:
         st.area_chart({"Times": times})
 
         timesExpander = st.expander("All times", expanded=True)
-        st.caption("Green = Better than your ao12, Red = Worse than your ao12, Yellow = Equal ao12")
+        timesExpander.caption("Green = Better than your ao12, Red = Worse than your ao12, Yellow = Equal ao12")
         for element in times:
             if element < ao12:
                 color = ":green"
