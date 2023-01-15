@@ -19,6 +19,19 @@ try:
         #main
         st.button("Refresh")
 
+        def saveData():
+            data = {
+            "pb": st.session_state.userDatas[st.session_state.userIndex]["pb"],
+            "ao5": st.session_state.userDatas[st.session_state.userIndex]["ao5"],
+            "ao12": st.session_state.userDatas[st.session_state.userIndex]["ao12"],
+            "scrambles": st.session_state.userDatas[st.session_state.userIndex]["scrambles"],
+            "times": st.session_state.userDatas[st.session_state.userIndex]["times"],
+            "list_ao5": st.session_state.userDatas[st.session_state.userIndex]["list_ao5"],
+            "list_ao12": st.session_state.userDatas[st.session_state.userIndex]["list_ao12"],
+            }
+            extension.userData.updateData(st.session_state.username, {"data": data})
+            st.experimental_rerun()
+
         #data
         pb = st.session_state.userDatas[st.session_state.userIndex]["pb"]
         ao5 = st.session_state.userDatas[st.session_state.userIndex]["ao5"]
@@ -53,25 +66,29 @@ try:
                 st.session_state.userDatas[st.session_state.userIndex]["scrambles"] = scrambles
                 times.remove(element)
                 st.session_state.userDatas[st.session_state.userIndex]["times"] = times
-                data = {
-                "pb": st.session_state.userDatas[st.session_state.userIndex]["pb"],
-                "ao5": st.session_state.userDatas[st.session_state.userIndex]["ao5"],
-                "ao12": st.session_state.userDatas[st.session_state.userIndex]["ao12"],
-                "scrambles": st.session_state.userDatas[st.session_state.userIndex]["scrambles"],
-                "times": st.session_state.userDatas[st.session_state.userIndex]["times"],
-                "list_ao5": st.session_state.userDatas[st.session_state.userIndex]["list_ao5"],
-                "list_ao12": st.session_state.userDatas[st.session_state.userIndex]["list_ao12"],
-                }
-                extension.userData.updateData(st.session_state.username, {"data": data})
-                st.experimental_rerun()
+                saveData()
 
         ao5Expander = st.expander("All ao5")
+        i = 0
         for element in list_ao5:
-            ao5Expander.markdown(element)
-        
+            ao5Col, btnDel = ao5Expander.columns(2)
+            ao5Col.markdown(element)
+            if btnDel.button("Delete", key=f"del{element}-{i}"):
+                list_ao5.remove(element)
+                st.session_state.userDatas[st.session_state.userIndex]["list_ao5"] = list_ao5
+                saveData()
+            i += 1
+
+        i = 0
         ao12Expander = st.expander("All ao12")
         for element in list_ao12:
-            ao12Expander.markdown(element)
+            ao12Col, btnDel = ao12Expander.columns(2)
+            ao12Col.markdown(element)
+            if btnDel.button("Delete", key=f"del{element}-{i}"):
+                list_ao12.remove(element)
+                st.session_state.userDatas[st.session_state.userIndex]["list_ao12"] = list_ao12
+                saveData()
+            i += 1
 
 
 except Exception as e:
