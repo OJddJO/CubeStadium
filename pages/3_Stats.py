@@ -1,5 +1,6 @@
 import streamlit as st
 from PIL import Image
+import extension.userData
 
 title = "Stats"
 icon = Image.open("icon.png")
@@ -48,8 +49,20 @@ try:
             t, btnDel = timesExpander.columns(2)
             t.markdown(f"{color}[**{element}**]: {scrambles[times.index(element)]}")
             if btnDel.button("Delete", key=f"del{element}-{scrambles[times.index(element)]}"):
-                times.remove(element)
                 scrambles.remove(scrambles[times.index(element)])
+                st.session_state.userDatas[st.session_state.userIndex]["scrambles"] = scrambles
+                times.remove(element)
+                st.session_state.userDatas[st.session_state.userIndex]["times"] = times
+                data = {
+                "pb": st.session_state.userDatas[st.session_state.userIndex]["pb"],
+                "ao5": st.session_state.userDatas[st.session_state.userIndex]["ao5"],
+                "ao12": st.session_state.userDatas[st.session_state.userIndex]["ao12"],
+                "scrambles": st.session_state.userDatas[st.session_state.userIndex]["scrambles"],
+                "times": st.session_state.userDatas[st.session_state.userIndex]["times"],
+                "list_ao5": st.session_state.userDatas[st.session_state.userIndex]["list_ao5"],
+                "list_ao12": st.session_state.userDatas[st.session_state.userIndex]["list_ao12"],
+                }
+                extension.userData.updateData(st.session_state.username, {"data": data})
                 st.experimental_rerun()
 
         ao5Expander = st.expander("All ao5")
