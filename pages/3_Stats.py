@@ -82,6 +82,8 @@ try:
                 if btnDel.button("Delete", key=f"del{element}-{i}"):
                     list_ao5.remove(element)
                     st.session_state.userDatas[st.session_state.userIndex]["list_ao5"] = list_ao5
+                    if ao5 == element:
+                        st.session_state.userDatas[st.session_state.userIndex]["ao5"] = min(list_ao5)
                     saveData()
                 i += 1
         else:
@@ -97,6 +99,8 @@ try:
                 if btnDel.button("Delete", key=f"del{element}-{i}"):
                     list_ao12.remove(element)
                     st.session_state.userDatas[st.session_state.userIndex]["list_ao12"] = list_ao12
+                    if ao12 == element:
+                        st.session_state.userDatas[st.session_state.userIndex]["ao12"] = min(list_ao12)
                     saveData()
                 i += 1
         else:
