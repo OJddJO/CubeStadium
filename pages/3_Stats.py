@@ -35,7 +35,7 @@ try:
         col2.metric("Best average of 5:", ao5)
         col3.metric("Best average of 12:", ao12)
 
-        st.line_chart({"Times": times})
+        st.area_chart({"Times": times})
 
         timesExpander = st.expander("All times", expanded=True)
         for element in times:
