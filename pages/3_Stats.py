@@ -37,7 +37,7 @@ try:
 
         timesExpander = st.expander("All times")
         for element in times:
-            timesExpander.markdown(f"<span style=\"color:green\">**{element}**</span>: {scrambles[times.index(element)]}")
+            timesExpander.markdown(f":green[**{element}**]: {scrambles[times.index(element)]}")
 
         ao5Expander = st.expander("All ao5")
         for element in list_ao5:
