@@ -47,7 +47,7 @@ try:
                 color = ":yellow"
             t, btnDel = timesExpander.columns(2)
             t.markdown(f"{color}[**{element}**]: {scrambles[times.index(element)]}")
-            if btnDel.button("Delete"):
+            if btnDel.button("Delete", key=f"del{element}-{scrambles[times.index(element)]}"):
                 times.remove(element)
                 scrambles.remove(scrambles[times.index(element)])
                 st.experimental_rerun()
