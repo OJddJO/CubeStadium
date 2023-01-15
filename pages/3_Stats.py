@@ -37,7 +37,7 @@ try:
 
         timesExpander = st.expander("All times")
         for element in times:
-            timesExpander.caption(f"{element[0]}: {scrambles[times.index(element)]}")
+            timesExpander.caption(f"{element}: {scrambles[times.index(element)]}")
 
         ao5Expander = st.expander("All ao5")
         for element in list_ao5:
