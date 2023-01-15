@@ -37,7 +37,13 @@ try:
 
         timesExpander = st.expander("All times")
         for element in times:
-            timesExpander.markdown(f":green[**{element}**]: {scrambles[times.index(element)]}")
+            if element < ao12:
+                color = ":green"
+            elif element > ao12:
+                color = ":red"
+            else:
+                color = ":yellow"
+            timesExpander.markdown(f"{color}[**{element}**]: {scrambles[times.index(element)]}")
 
         ao5Expander = st.expander("All ao5")
         for element in list_ao5:
