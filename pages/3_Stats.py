@@ -35,6 +35,7 @@ try:
         col2.metric("Best average of 5:", ao5)
         col3.metric("Best average of 12:", ao12)
 
+        st.caption("Times (in seconds) :")
         st.area_chart({"Times": times})
 
         timesExpander = st.expander("All times", expanded=True)
