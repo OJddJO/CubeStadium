@@ -53,14 +53,17 @@ try:
         #times
         timesExpander = st.expander("All times")
         if times is not None:
-            timesExpander.caption("Green = Better than your ao12, Red = Worse than your ao12, Yellow = Equal to your ao12")
+            timesExpander.caption("Green = Better than your ao12, Red = Worse than your ao12, Yellow = Equal to your ao12, Blue = No ao12 yet")
             for element in times:
-                if element < ao12:
-                    color = ":green"
-                elif element > ao12:
-                    color = ":red"
+                if ao12 is not None:
+                    if element < ao12:
+                        color = ":green"
+                    elif element > ao12:
+                        color = ":red"
+                    else:
+                        color = ":yellow"
                 else:
-                    color = ":yellow"
+                    color = ":blue"
                 t, btnDel = timesExpander.columns(2)
                 t.markdown(f"{color}[**{element}**]: {scrambles[times.index(element)]}")
                 if btnDel.button("Delete", key=f"del{element}-{scrambles[times.index(element)]}"):
