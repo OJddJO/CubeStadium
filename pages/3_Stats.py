@@ -68,27 +68,29 @@ try:
                 st.session_state.userDatas[st.session_state.userIndex]["times"] = times
                 saveData()
 
-        ao5Expander = st.expander("All ao5")
-        i = 0
-        for element in list_ao5:
-            ao5Col, btnDel = ao5Expander.columns(2)
-            ao5Col.markdown(element)
-            if btnDel.button("Delete", key=f"del{element}-{i}"):
-                list_ao5.remove(element)
-                st.session_state.userDatas[st.session_state.userIndex]["list_ao5"] = list_ao5
-                saveData()
-            i += 1
+        if list_ao5 is not None:
+            i = 0
+            ao5Expander = st.expander("All ao5")
+            for element in list_ao5:
+                ao5Col, btnDel = ao5Expander.columns(2)
+                ao5Col.markdown(element)
+                if btnDel.button("Delete", key=f"del{element}-{i}"):
+                    list_ao5.remove(element)
+                    st.session_state.userDatas[st.session_state.userIndex]["list_ao5"] = list_ao5
+                    saveData()
+                i += 1
 
-        i = 0
-        ao12Expander = st.expander("All ao12")
-        for element in list_ao12:
-            ao12Col, btnDel = ao12Expander.columns(2)
-            ao12Col.markdown(element)
-            if btnDel.button("Delete", key=f"del{element}-{i}"):
-                list_ao12.remove(element)
-                st.session_state.userDatas[st.session_state.userIndex]["list_ao12"] = list_ao12
-                saveData()
-            i += 1
+        if list_ao12 is not None:
+            i = 0
+            ao12Expander = st.expander("All ao12")
+            for element in list_ao12:
+                ao12Col, btnDel = ao12Expander.columns(2)
+                ao12Col.markdown(element)
+                if btnDel.button("Delete", key=f"del{element}-{i}"):
+                    list_ao12.remove(element)
+                    st.session_state.userDatas[st.session_state.userIndex]["list_ao12"] = list_ao12
+                    saveData()
+                i += 1
 
 
 except Exception as e:
