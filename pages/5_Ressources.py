@@ -20,8 +20,3 @@ others = st.expander("Others")
 others.subheader("3x3x3")
 others.caption("- 2-Sided PLL Recognition: https://logiqx.github.io/cubing-algs/html/2spll.html")
 others.caption("- PLL Trainer: https://speedcubedb.com/t/pllrecog")
-
-try:
-    st.session_state.authenticator.logout("Logout", "sidebar")
-except:
-    pass
