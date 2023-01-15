@@ -37,15 +37,15 @@ try:
 
         timesExpander = st.expander("All times")
         for element in times:
-            timesExpander.caption(f"{element}: {scrambles[times.index(element)]}")
+            timesExpander.markdown(f"<span style=\"color:green\">**{element}**</span>: {scrambles[times.index(element)]}")
 
         ao5Expander = st.expander("All ao5")
         for element in list_ao5:
-            ao5Expander.caption(element)
+            ao5Expander.markdown(element)
         
         ao12Expander = st.expander("All ao12")
         for element in list_ao12:
-            ao12Expander.caption(element)
+            ao12Expander.markdown(element)
 
 
 except Exception as e:
