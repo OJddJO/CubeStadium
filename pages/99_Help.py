@@ -8,7 +8,7 @@ st.sidebar.markdown("**Made with ❤️ by** [***OJddJO***](https://github.com/O
 
 auth = st.expander("Authentication")
 auth.subheader("I can't register or login")
-auth.caption("To register, go to the register page using the sidebar")
+auth.caption("- To register, go to the register page using the sidebar")
 auth.caption("- Make sure you have validated all the fields before clicking on the register button (just click outside the entry before clicking register)")
 auth.caption("- If there is an error, check if you are already logged in")
 auth.caption("- If you are not logged in, check if you have filled all the fields")
