@@ -99,6 +99,7 @@ try:
             try:
                 tmp_ao5 = times[-5:]
                 tmp_ao5.append(st.session_state.timer)
+                st.info(tmp_ao5)
                 if len(tmp_ao5) == 5:
                     tmp_ao5.remove(min(tmp_ao5))
                     tmp_ao5.remove(max(tmp_ao5))
