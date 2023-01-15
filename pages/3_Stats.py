@@ -35,7 +35,7 @@ try:
         col3.metric("Best average of 12:", ao12)
 
         st.caption("Times (in seconds) :")
-        st.area_chart({"Times": times})
+        st.area_chart({"Times": times, "ao5": list_ao5, "ao12": list_ao12})
 
         timesExpander = st.expander("All times", expanded=True)
         timesExpander.caption("Green = Better than your ao12, Red = Worse than your ao12, Yellow = Equal to your ao12")
