@@ -16,8 +16,6 @@ try:
         st.session_state.authenticator.logout("Logout", "sidebar")
 
         #main
-        st.header("Coming soon !")
-
         st.button("Refresh")
 
         #data
