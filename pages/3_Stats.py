@@ -35,18 +35,17 @@ try:
         col2.metric("Best average of 5:", ao5)
         col3.metric("Best average of 12:", ao12)
 
-        with st.expander("All times"):
-            for element in times:
-                st.write(element, scrambles[times.index(element)])
+        timesExpander = st.expander("All times")
+        for element in times:
+            timesExpander.write(element, scrambles[times.index(element)])
 
-        with st.expander("All ao5"):
-            for element in list_ao5:
-                st.write(element)
+        ao5Expander = st.expander("All ao5")
+        for element in list_ao5:
+            ao5Expander.write(element)
         
-        with st.expander("All ao12"):
-            for element in list_ao12:
-                st.write(element)
-
+        ao12Expander = st.expander("All ao12")
+        for element in list_ao12:
+            ao12Expander.write(element)
 
 
 except:
