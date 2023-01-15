@@ -45,7 +45,12 @@ try:
                 color = ":red"
             else:
                 color = ":yellow"
-            timesExpander.markdown(f"{color}[**{element}**]: {scrambles[times.index(element)]}")
+            t, btnDel = timesExpander.columns(2)
+            t.markdown(f"{color}[**{element}**]: {scrambles[times.index(element)]}")
+            if btnDel.button("Delete"):
+                times.remove(element)
+                scrambles.remove(scrambles[times.index(element)])
+                st.experimental_rerun()
 
         ao5Expander = st.expander("All ao5")
         for element in list_ao5:
@@ -58,4 +63,3 @@ try:
 
 except Exception as e:
     st.error("Please go to home page first")
-    st.error(e)
