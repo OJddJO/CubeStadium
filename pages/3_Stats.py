@@ -50,27 +50,32 @@ try:
         st.caption("Times (in seconds) :")
         st.area_chart({"Times": times})
 
+        #times
         timesExpander = st.expander("All times", expanded=True)
-        timesExpander.caption("Green = Better than your ao12, Red = Worse than your ao12, Yellow = Equal to your ao12")
-        for element in times:
-            if element < ao12:
-                color = ":green"
-            elif element > ao12:
-                color = ":red"
-            else:
-                color = ":yellow"
-            t, btnDel = timesExpander.columns(2)
-            t.markdown(f"{color}[**{element}**]: {scrambles[times.index(element)]}")
-            if btnDel.button("Delete", key=f"del{element}-{scrambles[times.index(element)]}"):
-                scrambles.remove(scrambles[times.index(element)])
-                st.session_state.userDatas[st.session_state.userIndex]["scrambles"] = scrambles
-                times.remove(element)
-                st.session_state.userDatas[st.session_state.userIndex]["times"] = times
-                saveData()
+        if times is not None:
+            timesExpander.caption("Green = Better than your ao12, Red = Worse than your ao12, Yellow = Equal to your ao12")
+            for element in times:
+                if element < ao12:
+                    color = ":green"
+                elif element > ao12:
+                    color = ":red"
+                else:
+                    color = ":yellow"
+                t, btnDel = timesExpander.columns(2)
+                t.markdown(f"{color}[**{element}**]: {scrambles[times.index(element)]}")
+                if btnDel.button("Delete", key=f"del{element}-{scrambles[times.index(element)]}"):
+                    scrambles.remove(scrambles[times.index(element)])
+                    st.session_state.userDatas[st.session_state.userIndex]["scrambles"] = scrambles
+                    times.remove(element)
+                    st.session_state.userDatas[st.session_state.userIndex]["times"] = times
+                    saveData()
+        else:
+            timesExpander.caption("No times yet")
 
+        #ao5
+        ao5Expander = st.expander("All ao5")
         if list_ao5 is not None:
             i = 0
-            ao5Expander = st.expander("All ao5")
             for element in list_ao5:
                 ao5Col, btnDel = ao5Expander.columns(2)
                 ao5Col.markdown(element)
@@ -79,10 +84,13 @@ try:
                     st.session_state.userDatas[st.session_state.userIndex]["list_ao5"] = list_ao5
                     saveData()
                 i += 1
+        else:
+            ao5Expander.caption("No ao5 yet")
 
+        #ao12
+        ao12Expander = st.expander("All ao12")
         if list_ao12 is not None:
             i = 0
-            ao12Expander = st.expander("All ao12")
             for element in list_ao12:
                 ao12Col, btnDel = ao12Expander.columns(2)
                 ao12Col.markdown(element)
@@ -91,6 +99,8 @@ try:
                     st.session_state.userDatas[st.session_state.userIndex]["list_ao12"] = list_ao12
                     saveData()
                 i += 1
+        else:
+            ao12Expander.caption("No ao12 yet")
 
 
 except Exception as e:
