@@ -53,7 +53,7 @@ try:
         #times
         timesExpander = st.expander("All times")
         if times is not None:
-            timesExpander.caption("Green = Better than your ao12, Red = Worse than your ao12, Yellow = Equal to your ao12")
+            timesExpander.caption("Green = Better than your ao12    Red = Worse than your ao12    Yellow = Equal to your ao12")
             for element in times:
                 if ao12 is not None:
                     if element < ao12:
