@@ -175,10 +175,11 @@ try:
             )
 
         startStop = st.empty()
-        if startStop.button("Start", on_click=timerFunc):
+        btnStart = startStop.button("Start", on_click=timerFunc)
+        if btnStart:
             triggerButton()
             st.experimental_rerun()
-        
+
         triggerButton()
 
         cube = Cube()
