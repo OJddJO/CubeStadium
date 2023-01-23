@@ -149,6 +149,15 @@ try:
 
 
         startStop = st.empty()
+
+        cube = Cube()
+        cubeModel = cube.drawCube(st.session_state.scramble)
+        st.image(cubeModel)
+
+        st.info("You can use the spacebar to start/stop the timer")
+
+        st.session_state.authenticator.logout("Logout", "sidebar")
+
         startStop.button("Start", on_click=timerFunc)
         #spacebar trigger button
         components.html(
@@ -169,14 +178,6 @@ try:
             height=0,
             width=0,
         )
-
-        cube = Cube()
-        cubeModel = cube.drawCube(st.session_state.scramble)
-        st.image(cubeModel)
-
-        st.info("You can use the spacebar to start/stop the timer")
-
-        st.session_state.authenticator.logout("Logout", "sidebar")
 
 
 except:
