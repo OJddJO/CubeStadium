@@ -157,6 +157,8 @@ try:
 
         st.info("You can use the spacebar to start/stop the timer")
 
+        st.session_state.authenticator.logout("Logout", "sidebar")
+
         #spacebar trigger button
         components.html(
             """
@@ -176,9 +178,6 @@ try:
             height=0,
             width=0,
         )
-
-
-        st.session_state.authenticator.logout("Logout", "sidebar")
 
 
 except:
