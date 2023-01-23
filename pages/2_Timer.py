@@ -75,8 +75,6 @@ try:
                     # stop timer
                     run = False
                 sleep(0.01)
-            sleep(1)
-            st.experimental_rerun()
         
         def stopTimer():
             st.session_state.scramble = getScramble(int(scrambleSizeOption))
@@ -180,6 +178,7 @@ try:
             height=0,
             width=0,
         )
+        st.experimental_rerun()
 
 
 except:
