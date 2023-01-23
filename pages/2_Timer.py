@@ -181,7 +181,6 @@ try:
             btnStart = False
             btnStart = startStop.button("Start", on_click=timerFunc, key=randint(0, 1000000000))
             triggerButton()
-            st.experimental_rerun()
 
         triggerButton()
 
