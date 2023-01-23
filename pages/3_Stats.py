@@ -86,7 +86,10 @@ try:
                     list_ao5.remove(element)
                     st.session_state.userDatas[st.session_state.userIndex]["list_ao5"] = list_ao5
                     if ao5 == element:
-                        st.session_state.userDatas[st.session_state.userIndex]["ao5"] = min(list_ao5)
+                        try:
+                            st.session_state.userDatas[st.session_state.userIndex]["ao5"] = min(list_ao5)
+                        except:
+                            st.session_state.userDatas[st.session_state.userIndex]["ao5"] = None
                     saveData()
                 i += 1
         else:
@@ -103,7 +106,10 @@ try:
                     list_ao12.remove(element)
                     st.session_state.userDatas[st.session_state.userIndex]["list_ao12"] = list_ao12
                     if ao12 == element:
-                        st.session_state.userDatas[st.session_state.userIndex]["ao12"] = min(list_ao12)
+                        try:
+                            st.session_state.userDatas[st.session_state.userIndex]["ao12"] = min(list_ao12)
+                        except:
+                            st.session_state.userDatas[st.session_state.userIndex]["ao12"] = None
                     saveData()
                 i += 1
         else:
