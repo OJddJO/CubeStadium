@@ -54,6 +54,7 @@ try:
         timesExpander = st.expander("All times")
         if times is not None:
             timesExpander.caption("Green = Better than your ao12 | Red = Worse than your ao12 | Yellow = Equal to your ao12")
+            i = 0
             for element in times:
                 if ao12 is not None:
                     if element < ao12:
@@ -66,7 +67,7 @@ try:
                     color = ":blue"
                 t, btnDel = timesExpander.columns(2)
                 t.markdown(f"{color}[**{element}**]: {scrambles[times.index(element)]}")
-                if btnDel.button("Delete", key=f"del{element}-{scrambles[times.index(element)]}"):
+                if btnDel.button("Delete", key=f"{i}_del{element}-{scrambles[times.index(element)]}"):
                     scrambles.remove(scrambles[times.index(element)])
                     st.session_state.userDatas[st.session_state.userIndex]["scrambles"] = scrambles
                     times.remove(element)
