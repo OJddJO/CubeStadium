@@ -9,6 +9,7 @@ title = "PVP"
 icon = Image.open("icon.png")
 st.set_page_config(page_title=title, page_icon=icon)
 st.title(title)
+st.info("Still in development ... 🛠️")
 st.header("Coming soon !")
 st.sidebar.markdown("**Made with ❤️ by** [***OJddJO***](https://github.com/OJddJO/)")
 
