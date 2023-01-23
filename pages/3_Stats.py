@@ -78,6 +78,7 @@ try:
                         except:
                             st.session_state.userDatas[st.session_state.userIndex]["pb"] = None
                     saveData()
+                i += 1
         else:
             timesExpander.caption("No times yet")
 
