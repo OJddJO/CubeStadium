@@ -175,12 +175,13 @@ try:
                 width=0,
             )
 
-        startStop = st.empty()
+        colA, colB = st.columns(2)
+        startStop = colA.empty()
         btnStart = startStop.button("Start", on_click=timerFunc)
         if btnStart:
             btnStart = False
             btnStart = startStop.button("Start", on_click=timerFunc, key=randint(0, 1000000000))
-            st.caption("")
+            colB.caption("")
             triggerButton()
 
         triggerButton()
