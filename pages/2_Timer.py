@@ -170,8 +170,7 @@ try:
             width=0,
         )
 
-        if st.button("Refocus"):
-            st.experimental_rerun()
+        st.button("Refocus")
 
 
         cube = Cube()
