@@ -147,7 +147,7 @@ try:
 
             st.success("Time registered !")
 
-            startStop.button("Start", on_click=timerFunc)
+            startStop.button("Start", on_click=timerFunc, key="afterStop")
             #spacebar trigger button
             components.html(
                 """
