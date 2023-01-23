@@ -147,6 +147,8 @@ try:
 
             st.success("Time registered !")
 
+            triggerButton()
+
         startStop = st.empty()
         startStop.button("Start", on_click=timerFunc)
         #spacebar trigger button
@@ -178,8 +180,6 @@ try:
         st.info("You can use the spacebar to start/stop the timer")
 
         st.session_state.authenticator.logout("Logout", "sidebar")
-
-        triggerButton()
 
 
 except:
