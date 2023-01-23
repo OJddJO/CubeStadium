@@ -181,6 +181,5 @@ try:
         st.session_state.authenticator.logout("Logout", "sidebar")
 
 
-
 except:
     st.error("Please go to home page first")
