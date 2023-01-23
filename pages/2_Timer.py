@@ -43,7 +43,6 @@ try:
         def timerFunc():
             # init timer with scramble and reset timer
             buttonState = startStop.button("Stop", on_click=stopTimer)
-            st.session_state.run = True
             #spacebar trigger button
             components.html(
                 """
@@ -149,13 +148,11 @@ try:
 
             st.success("Time registered !")
 
-            st.session_state.run = False
-
 
         startStop = st.empty()
         if startStop.button("Start"):
             timerFunc()
-            st.experimental_rerun()
+            st.info(st.session_state.timer)
         #spacebar trigger button
         components.html(
             """
