@@ -200,5 +200,6 @@ try:
         st.session_state.authenticator.logout("Logout", "sidebar")
 
 
-except:
+except Exception as e:
     st.error("Please go to home page first")
+    st.error(e)
