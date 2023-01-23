@@ -145,9 +145,28 @@ try:
             }
             extension.userData.updateData(st.session_state.username, {"data": data})
 
-            st.button("refresh").click()
-
             st.success("Time registered !")
+
+            startStop.button("Start", on_click=timerFunc)
+            #spacebar trigger button
+            components.html(
+                """
+                <script>
+                const doc = window.parent.document;
+                buttons = Array.from(doc.querySelectorAll('button[kind=secondary]'));
+                const startButton = buttons.find(el => el.innerText === 'Start');
+                doc.addEventListener('keydown', function(e) {
+                    switch (e.keyCode) {
+                        case 32:
+                            startButton.click();
+                            break;
+                    }
+                });
+                </script>
+                """,
+                height=0,
+                width=0,
+            )    
 
 
         startStop = st.empty()
