@@ -147,6 +147,8 @@ try:
 
             st.success("Time registered !")
 
+            st.experimental_rerun()
+
 
         startStop = st.empty()
 
