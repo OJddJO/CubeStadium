@@ -149,9 +149,8 @@ try:
             }
             extension.userData.updateData(st.session_state.username, {"data": data})
 
-            st.success("Time registered !")
-
             st.session_state.run = False
+            st.success("Time registered !")
 
 
         startStop = st.empty()
