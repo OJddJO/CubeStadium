@@ -89,4 +89,3 @@ try:
 
 except Exception as e:
     st.error("Please go to home page first")
-    st.error(e)
