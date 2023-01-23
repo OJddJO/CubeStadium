@@ -177,6 +177,7 @@ try:
         startStop = st.empty()
         if startStop.button("Start", on_click=timerFunc):
             triggerButton()
+            st.experimental_rerun()
         
         triggerButton()
 
