@@ -145,6 +145,8 @@ try:
             }
             extension.userData.updateData(st.session_state.username, {"data": data})
 
+            st.button("refresh").click()
+
             st.success("Time registered !")
 
 
@@ -169,9 +171,6 @@ try:
             height=0,
             width=0,
         )
-
-        st.button("Refocus")
-
 
         cube = Cube()
         cubeModel = cube.drawCube(st.session_state.scramble)
