@@ -32,11 +32,12 @@ try:
         try:
             scrambleContainer.subheader(st.session_state.scramble)
             timerContainer.title("{:.2f}".format(st.session_state.timer))
-        except:
+        except Exception as e:
             st.session_state.scramble = getScramble()
             st.session_state.timer = 0.00
             scrambleContainer.subheader(st.session_state.scramble)
             timerContainer.title("{:.2f}".format(st.session_state.timer))
+            st.warning(e)
 
 
         def timerFunc():
