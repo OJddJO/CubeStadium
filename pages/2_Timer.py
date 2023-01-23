@@ -75,6 +75,8 @@ try:
                     # stop timer
                     run = False
                 sleep(0.01)
+            sleep(1)
+            st.experimental_rerun()
         
         def stopTimer():
             st.session_state.scramble = getScramble(int(scrambleSizeOption))
@@ -146,8 +148,6 @@ try:
             extension.userData.updateData(st.session_state.username, {"data": data})
 
             st.success("Time registered !")
-
-            st.experimental_rerun()
 
 
         startStop = st.empty()
