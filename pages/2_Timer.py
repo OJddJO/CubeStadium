@@ -147,31 +147,28 @@ try:
 
             st.success("Time registered !")
 
-            triggerButton()
 
         startStop = st.empty()
         startStop.button("Start", on_click=timerFunc)
         #spacebar trigger button
-        def triggerButton():
-            components.html(
-                """
-                <script>
-                const doc = window.parent.document;
-                buttons = Array.from(doc.querySelectorAll('button[kind=secondary]'));
-                const startButton = buttons.find(el => el.innerText === 'Start');
-                doc.addEventListener('keydown', function(e) {
-                    switch (e.keyCode) {
-                        case 32:
-                            startButton.click();
-                            break;
-                    }
-                });
-                </script>
-                """,
-                height=0,
-                width=0,
-            )
-        triggerButton()
+        components.html(
+            """
+            <script>
+            const doc = window.parent.document;
+            buttons = Array.from(doc.querySelectorAll('button[kind=secondary]'));
+            const startButton = buttons.find(el => el.innerText === 'Start');
+            doc.addEventListener('keydown', function(e) {
+                switch (e.keyCode) {
+                    case 32:
+                        startButton.click();
+                        break;
+                }
+            });
+            </script>
+            """,
+            height=0,
+            width=0,
+        )
 
         cube = Cube()
         cubeModel = cube.drawCube(st.session_state.scramble)
