@@ -37,12 +37,12 @@ try:
             st.session_state.timer = 0.00
             scrambleContainer.subheader(st.session_state.scramble)
             timerContainer.title("{:.2f}".format(st.session_state.timer))
-            st.warning(e)
 
 
         def timerFunc():
             # init timer with scramble and reset timer
             buttonState = startStop.button("Stop", on_click=stopTimer)
+            st.session_state.run = True
             #spacebar trigger button
             components.html(
                 """
@@ -148,10 +148,14 @@ try:
 
             st.success("Time registered !")
 
+            st.session_state.run = False
+
 
         startStop = st.empty()
         if startStop.button("Start"):
             timerFunc()
+            while st.session_state.run:
+                pass
             st.info(st.session_state.timer)
         #spacebar trigger button
         components.html(
@@ -178,6 +182,7 @@ try:
         st.image(cubeModel)
 
         st.info("You can use the spacebar to start/stop the timer")
+        st.info("Use the R key to be able to use the spacebar if it doesn't work")
 
         st.session_state.authenticator.logout("Logout", "sidebar")
 
