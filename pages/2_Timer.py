@@ -175,6 +175,7 @@ try:
         st.image(cubeModel)
 
         st.info("You can use the spacebar to start/stop the timer")
+        st.info("Use the R key to be able to use the spacebar if it doesn't work")
 
         st.session_state.authenticator.logout("Logout", "sidebar")
 
