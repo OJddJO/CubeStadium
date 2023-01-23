@@ -157,7 +157,6 @@ try:
         startStop = st.empty()
         if startStop.button("Start"):
             timerFunc()
-            st.experimental_rerun()
 
         #spacebar trigger button
         components.html(
