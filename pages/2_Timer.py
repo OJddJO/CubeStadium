@@ -5,6 +5,7 @@ from extension.cubeModel import Cube
 from time import sleep, time
 from PIL import Image
 import extension.userData
+from random import randint
 
 title = "Timer"
 icon = Image.open("icon.png")
@@ -178,7 +179,7 @@ try:
         btnStart = startStop.button("Start", on_click=timerFunc)
         if btnStart:
             btnStart = False
-            btnStart = startStop.button("Start", on_click=timerFunc)
+            btnStart = startStop.button("Start", on_click=timerFunc, key=randint(0, 100000))
             st.info(btnStart)
             triggerButton()
 
