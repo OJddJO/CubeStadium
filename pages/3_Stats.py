@@ -71,6 +71,11 @@ try:
                     st.session_state.userDatas[st.session_state.userIndex]["scrambles"] = scrambles
                     times.remove(element)
                     st.session_state.userDatas[st.session_state.userIndex]["times"] = times
+                    if pb == element:
+                        try:
+                            st.session_state.userDatas[st.session_state.userIndex]["pb"] = min(times)
+                        except:
+                            st.session_state.userDatas[st.session_state.userIndex]["pb"] = None
                     saveData()
         else:
             timesExpander.caption("No times yet")
