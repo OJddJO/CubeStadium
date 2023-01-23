@@ -147,36 +147,15 @@ try:
 
             st.success("Time registered !")
 
-            startStop.button("Start", on_click=timerFunc, key="afterStop")
-            #spacebar trigger button
-            components.html(
-                """
-                <script>
-                const doc = window.parent.document;
-                buttons = Array.from(doc.querySelectorAll('button[kind=secondary]'));
-                const startButton = buttons.find(el => el.innerText === 'Start');
-                doc.addEventListener('keydown', function(e) {
-                    switch (e.keyCode) {
-                        case 32:
-                            startButton.click();
-                            break;
-                    }
-                });
-                </script>
-                """,
-                height=0,
-                width=0,
-            )    
-
 
         startStop = st.empty()
-        startStop.button("Start", on_click=timerFunc)
+        startStop.button("Start", on_click=timerFunc, type="primary")
         #spacebar trigger button
         components.html(
             """
             <script>
             const doc = window.parent.document;
-            buttons = Array.from(doc.querySelectorAll('button[kind=secondary]'));
+            buttons = Array.from(doc.querySelectorAll('button[kind=primary]'));
             const startButton = buttons.find(el => el.innerText === 'Start');
             doc.addEventListener('keydown', function(e) {
                 switch (e.keyCode) {
