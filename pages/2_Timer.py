@@ -176,7 +176,9 @@ try:
 
         startStop = st.empty()
         btnStart = startStop.button("Start", on_click=timerFunc)
-        if btnStart: triggerButton(); triggerButton()
+        if btnStart: 
+            triggerButton()
+            btnStart = False
 
         triggerButton()
 
