@@ -76,6 +76,9 @@ try:
                     # stop timer
                     run = False
                 sleep(0.01)
+            # wait until st.session_state.run == False
+            while st.session_state.run:
+                sleep(0.01)
 
         def stopTimer():
             st.session_state.scramble = getScramble(int(scrambleSizeOption))
@@ -154,8 +157,6 @@ try:
         startStop = st.empty()
         if startStop.button("Start"):
             timerFunc()
-            while st.session_state.run:
-                pass
             st.info(st.session_state.timer)
         #spacebar trigger button
         components.html(
