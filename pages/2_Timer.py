@@ -5,6 +5,7 @@ from extension.cubeModel import Cube
 from time import sleep, time
 from PIL import Image
 import extension.userData
+from random import randint
 
 title = "Timer"
 icon = Image.open("icon.png")
@@ -32,7 +33,7 @@ try:
         try:
             scrambleContainer.subheader(st.session_state.scramble)
             timerContainer.title("{:.2f}".format(st.session_state.timer))
-        except:
+        except Exception as e:
             st.session_state.scramble = getScramble()
             st.session_state.timer = 0.00
             scrambleContainer.subheader(st.session_state.scramble)
@@ -42,6 +43,7 @@ try:
         def timerFunc():
             # init timer with scramble and reset timer
             buttonState = startStop.button("Stop", on_click=stopTimer)
+            st.session_state.run = True
             #spacebar trigger button
             components.html(
                 """
@@ -75,7 +77,10 @@ try:
                     # stop timer
                     run = False
                 sleep(0.01)
-        
+            # wait until st.session_state.run == False
+            while st.session_state.run:
+                pass
+
         def stopTimer():
             st.session_state.scramble = getScramble(int(scrambleSizeOption))
             scrambleContainer.subheader(st.session_state.scramble)
@@ -145,40 +150,52 @@ try:
             }
             extension.userData.updateData(st.session_state.username, {"data": data})
 
+            st.session_state.run = False
             st.success("Time registered !")
 
-        startStop = st.empty()
-        startStop.button("Start", on_click=timerFunc)
 
-        
+        #spacebar trigger button
+        def triggerButton():
+            components.html(
+                """
+                <script>
+                const doc = window.parent.document;
+                buttons = Array.from(doc.querySelectorAll('button[kind=secondary]'));
+                const startButton = buttons.find(el => el.innerText === 'Start');
+                doc.addEventListener('keydown', function(e) {
+                    switch (e.keyCode) {
+                        case 32:
+                            startButton.click();
+                            break;
+                    }
+                });
+                </script>
+                """,
+                height=0,
+                width=0,
+            )
+
+        colA, colB = st.columns(2)
+        startStop = colA.empty()
+        btnStart = startStop.button("Start", on_click=timerFunc)
+        if btnStart:
+            btnStart = False
+            btnStart = startStop.button("Start", on_click=timerFunc, key=randint(0, 1000000000))
+            colB.caption("")
+            triggerButton()
+
+        triggerButton()
+
         cube = Cube()
         cubeModel = cube.drawCube(st.session_state.scramble)
         st.image(cubeModel)
 
         st.info("You can use the spacebar to start/stop the timer")
+        st.info("Use the R key to be able to use the spacebar if it doesn't work")
 
         st.session_state.authenticator.logout("Logout", "sidebar")
 
-        #spacebar trigger button
-        components.html(
-            """
-            <script>
-            const doc = window.parent.document;
-            buttons = Array.from(doc.querySelectorAll('button[kind=secondary]'));
-            const startButton = buttons.find(el => el.innerText === 'Start');
-            doc.addEventListener('keydown', function(e) {
-                switch (e.keyCode) {
-                    case 32:
-                        startButton.click();
-                        break;
-                }
-            });
-            </script>
-            """,
-            height=0,
-            width=0,
-        )
 
-
-except:
+except Exception as e:
     st.error("Please go to home page first")
+    st.error(e)
