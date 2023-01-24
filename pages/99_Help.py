@@ -20,4 +20,8 @@ timer.subheader("I can't start/stop the timer")
 timer.caption("To start the timer, click on the start/stop button")
 timer.caption("If you're using the spacebar, try again after re-entering\nthe timer page (just click on the timer page in the sidebar so you don't have to reload the page)")
 timer.caption("Or you can just use the button to start and stop with the spacebar")
+timer.subheader("Where is the +2/DNF/Delete button?")
+timer.caption("Remember one rule: **+2/DNF doesn't count at home**")
+timer.caption("The delete button can be found in the *Stats* page")
+
 
