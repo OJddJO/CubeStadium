@@ -148,7 +148,6 @@ try:
                 "list_ao5": st.session_state.userDatas[st.session_state.userIndex]["list_ao5"],
                 "list_ao12": st.session_state.userDatas[st.session_state.userIndex]["list_ao12"],
             }
-            st.info(data)
             extension.userData.updateData(st.session_state.username, {"data": data})
 
             st.session_state.run = False
