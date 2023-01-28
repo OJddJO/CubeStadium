@@ -55,15 +55,11 @@ try:
                         st.session_state.inRoom = True
                         st.session_state.roomData = extension.roomManager.getRoom(name)
                         joinRoomContainer.success("Joined room " + name)
-                        initRoomPage()
                     else:
                         joinRoomContainer.error("Room is full")
                 else:
                     joinRoomContainer.error("Wrong password")
 
-
-            def initRoomPage():
-                pass
 
             #create room
             createRoomContainer = st.expander("Create Room")
@@ -74,7 +70,7 @@ try:
             def createRoom(roomName, username, roomPassword, maxUsers, scrambleSize):
                 extension.roomManager.createRoom(roomName, username, roomPassword, maxUsers, getScramble(int(scrambleSize)))
                 createRoomContainer.success("Created room " + roomName)
-                initRoomPage()
+                joinRoom(roomName, roomPassword)
             createRoomContainer.button("Create", on_click=createRoom, args=(createRoomName, st.session_state.username, createRoomPassword, maxUsers, scrambleSize))
 
             #join room
