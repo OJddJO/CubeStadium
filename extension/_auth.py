@@ -4,7 +4,7 @@ import streamlit_authenticator as sa
 
 conn = deta.Deta(os.environ["db_key"])
 
-db = conn.Base("cubestadium_users")
+db = conn.Base("cubestadiumdb")
 
 def insertUser(name, username, password, data={"pb": None, "ao5": None, "ao12": None, "scrambles": [], "times": [], "list_ao5": [], "list_ao12": []}):
     return db.put({"key": username, "name": name, "password": encodePassword(password), "data": data})
